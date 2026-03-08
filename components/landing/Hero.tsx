@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SECTION_HERO, CONTAINER_MD, SPACE_Y_8, CONTAINER_SM, BTN_PRIMARY_HERO, BTN_SECONDARY_HERO, H1_HERO, P_HERO } from "@/lib/theme";
+import { GooglePlayBadge } from "@/components/landing/GooglePlayBadge";
 
 interface HeroProps {
   title: string;
@@ -10,6 +11,7 @@ interface HeroProps {
   ctaLink?: string;
   ctaSecondaryText?: string;
   ctaSecondaryLink?: string;
+  showGooglePlayBadge?: boolean;
   className?: string;
 }
 
@@ -20,6 +22,7 @@ export function Hero({
   ctaLink = "#",
   ctaSecondaryText,
   ctaSecondaryLink = "#",
+  showGooglePlayBadge = false,
   className
 }: HeroProps) {
   return (
@@ -59,6 +62,12 @@ export function Hero({
                 <Link href={ctaSecondaryLink}>{ctaSecondaryText}</Link>
               </Button>
             )}
+          </div>
+        )}
+
+        {showGooglePlayBadge && (
+          <div className="flex justify-center pt-2">
+            <GooglePlayBadge />
           </div>
         )}
       </div>

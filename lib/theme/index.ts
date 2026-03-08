@@ -1,7 +1,3 @@
-/** Central export point for all theme constants */
-
-// Export all UI constants
+//central exports for theme related files
 export * from "./ui";
-
-// Export all typography constants
 export * from "./typography";

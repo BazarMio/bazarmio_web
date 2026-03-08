@@ -44,8 +44,9 @@ export type FeaturesPageData = {
 export const featuresData: { [key in Lang]: FeaturesPageData } = {
   en: {
     hero: {
-      title: "Powerful Features for Your Market",
-      subtitle: "All the tools you need to run your business efficiently",
+      title: "Every Feature Your Shop Needs — Free to Start",
+      subtitle:
+        "Inventory tracking, sales recording, and analytics built for small shops and street vendors in Ecuador. No training required.",
     },
     features: [
       {
@@ -105,7 +106,8 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
     ],
     comparison: {
       title: "Free vs Pro",
-      subtitle: "Everything you need to grow — start free, upgrade when you're ready",
+      subtitle:
+        "Everything you need to grow — start free, upgrade when you're ready",
       freeTier: "Free",
       proTier: "Pro",
       sections: [
@@ -122,9 +124,17 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           title: "Products",
           rows: [
             { feature: "Add / edit / delete products", free: true, pro: true },
-            { feature: "Product photos (camera / gallery)", free: true, pro: true },
+            {
+              feature: "Product photos (camera / gallery)",
+              free: true,
+              pro: true,
+            },
             { feature: "Barcode scanner (SKU)", free: true, pro: true },
-            { feature: "Stock tracking & low stock alerts", free: true, pro: true },
+            {
+              feature: "Stock tracking & low stock alerts",
+              free: true,
+              pro: true,
+            },
             { feature: "Category management", free: true, pro: true },
             { feature: "Profit margins calculator", free: true, pro: true },
             { feature: "Product sales trend chart", free: false, pro: true },
@@ -136,7 +146,11 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             { feature: "Record multi-product sales", free: true, pro: true },
             { feature: "Price override per item", free: true, pro: true },
             { feature: "Barcode scan to add to cart", free: true, pro: true },
-            { feature: "Void sales (with stock restore)", free: true, pro: true },
+            {
+              feature: "Void sales (with stock restore)",
+              free: true,
+              pro: true,
+            },
             { feature: "Full sale history", free: true, pro: true },
           ],
         },
@@ -145,13 +159,25 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           rows: [
             { feature: "Last 7 days", free: true, pro: true },
             { feature: "Last 30 days", free: true, pro: true },
-            { feature: "Last 90 / 365 days / all time", free: false, pro: true },
+            {
+              feature: "Last 90 / 365 days / all time",
+              free: false,
+              pro: true,
+            },
             { feature: "Custom date range", free: false, pro: true },
-            { feature: "Period over period comparison", free: false, pro: true },
+            {
+              feature: "Period over period comparison",
+              free: false,
+              pro: true,
+            },
             { feature: "Day of week breakdown chart", free: false, pro: true },
             { feature: "Inventory health dashboard", free: false, pro: true },
             { feature: "Product trend search", free: false, pro: true },
-            { feature: "Top products & categories table", free: true, pro: true },
+            {
+              feature: "Top products & categories table",
+              free: true,
+              pro: true,
+            },
             { feature: "Payment method breakdown", free: true, pro: true },
           ],
         },
@@ -159,14 +185,22 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           title: "Exports",
           rows: [
             { feature: "Sales CSV export", free: false, pro: true },
-            { feature: "Inventory snapshot CSV export", free: false, pro: true },
+            {
+              feature: "Inventory snapshot CSV export",
+              free: false,
+              pro: true,
+            },
             { feature: "PDF sales report", free: false, pro: true },
           ],
         },
         {
           title: "General",
           rows: [
-            { feature: "Offline first (no internet needed)", free: true, pro: true },
+            {
+              feature: "Offline first (no internet needed)",
+              free: true,
+              pro: true,
+            },
             { feature: "Spanish & English language", free: true, pro: true },
             { feature: "Light & dark theme", free: true, pro: true },
           ],
@@ -174,16 +208,17 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       ],
     },
     cta: {
-      title: "Ready to Transform Your Business?",
-      subtitle: "Join thousands of merchants already using Bazarmio",
-      button: "Start Free Trial",
+      title: "Everything you need. Nothing you don't.",
+      subtitle:
+        "Free to download. No contracts, no paperwork, no internet required. Just your shop, organized.",
+      button: "Download Free on Google Play",
     },
   },
   es: {
     hero: {
-      title: "Características Poderosas Para Tu Mercado",
+      title: "Todo lo que Tu Tienda Necesita — Gratis para Empezar",
       subtitle:
-        "Todas las herramientas que necesitas para manejar tu negocio eficientemente",
+        "Control de inventario, registro de ventas y reportes diseñados para tiendas pequeñas y vendedores en Ecuador. Sin capacitación.",
     },
     features: [
       {
@@ -243,7 +278,8 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
     ],
     comparison: {
       title: "Gratis vs Pro",
-      subtitle: "Todo lo que necesitas para crecer — empieza gratis, mejora cuando estés listo",
+      subtitle:
+        "Todo lo que necesitas para crecer — empieza gratis, mejora cuando estés listo",
       freeTier: "Gratis",
       proTier: "Pro",
       sections: [
@@ -252,29 +288,73 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           rows: [
             { feature: "Número de inventarios", free: "1", pro: "10" },
             { feature: "Editar / eliminar inventarios", free: true, pro: true },
-            { feature: "Íconos de inventario con colores", free: true, pro: true },
+            {
+              feature: "Íconos de inventario con colores",
+              free: true,
+              pro: true,
+            },
             { feature: "Selector de inventario activo", free: true, pro: true },
           ],
         },
         {
           title: "Productos",
           rows: [
-            { feature: "Agregar / editar / eliminar productos", free: true, pro: true },
-            { feature: "Fotos de productos (cámara / galería)", free: true, pro: true },
-            { feature: "Escáner de código de barras (SKU)", free: true, pro: true },
-            { feature: "Seguimiento de stock y alertas de bajo inventario", free: true, pro: true },
+            {
+              feature: "Agregar / editar / eliminar productos",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Fotos de productos (cámara / galería)",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Escáner de código de barras (SKU)",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Seguimiento de stock y alertas de bajo inventario",
+              free: true,
+              pro: true,
+            },
             { feature: "Gestión de categorías", free: true, pro: true },
-            { feature: "Calculadora de márgenes de ganancia", free: true, pro: true },
-            { feature: "Gráfico de tendencia de ventas por producto", free: false, pro: true },
+            {
+              feature: "Calculadora de márgenes de ganancia",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Gráfico de tendencia de ventas por producto",
+              free: false,
+              pro: true,
+            },
           ],
         },
         {
           title: "Ventas",
           rows: [
-            { feature: "Registrar ventas de múltiples productos", free: true, pro: true },
-            { feature: "Precio personalizado por artículo", free: true, pro: true },
-            { feature: "Escanear código de barras para agregar al carrito", free: true, pro: true },
-            { feature: "Anular ventas (con restauración de stock)", free: true, pro: true },
+            {
+              feature: "Registrar ventas de múltiples productos",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Precio personalizado por artículo",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Escanear código de barras para agregar al carrito",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Anular ventas (con restauración de stock)",
+              free: true,
+              pro: true,
+            },
             { feature: "Historial completo de ventas", free: true, pro: true },
           ],
         },
@@ -283,13 +363,37 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           rows: [
             { feature: "Últimos 7 días", free: true, pro: true },
             { feature: "Últimos 30 días", free: true, pro: true },
-            { feature: "Últimos 90 / 365 días / todo el tiempo", free: false, pro: true },
-            { feature: "Rango de fechas personalizado", free: false, pro: true },
-            { feature: "Comparación período a período", free: false, pro: true },
+            {
+              feature: "Últimos 90 / 365 días / todo el tiempo",
+              free: false,
+              pro: true,
+            },
+            {
+              feature: "Rango de fechas personalizado",
+              free: false,
+              pro: true,
+            },
+            {
+              feature: "Comparación período a período",
+              free: false,
+              pro: true,
+            },
             { feature: "Gráfico por día de la semana", free: false, pro: true },
-            { feature: "Panel de salud del inventario", free: false, pro: true },
-            { feature: "Búsqueda de tendencias de productos", free: false, pro: true },
-            { feature: "Tabla de mejores productos y categorías", free: true, pro: true },
+            {
+              feature: "Panel de salud del inventario",
+              free: false,
+              pro: true,
+            },
+            {
+              feature: "Búsqueda de tendencias de productos",
+              free: false,
+              pro: true,
+            },
+            {
+              feature: "Tabla de mejores productos y categorías",
+              free: true,
+              pro: true,
+            },
             { feature: "Desglose por método de pago", free: true, pro: true },
           ],
         },
@@ -304,7 +408,11 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
         {
           title: "General",
           rows: [
-            { feature: "Funciona sin internet (offline)", free: true, pro: true },
+            {
+              feature: "Funciona sin internet (offline)",
+              free: true,
+              pro: true,
+            },
             { feature: "Idiomas español e inglés", free: true, pro: true },
             { feature: "Tema claro y oscuro", free: true, pro: true },
           ],
@@ -312,9 +420,10 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       ],
     },
     cta: {
-      title: "¿Listo Para Transformar Tu Negocio?",
-      subtitle: "Únete a miles de comerciantes que ya usan Bazarmio",
-      button: "Comenzar Prueba Gratis",
+      title: "Todo lo que necesitas. Nada que no uses.",
+      subtitle:
+        "Gratis. Sin contratos, sin papeleos, sin necesitar internet. Solo tu negocio, en orden.",
+      button: "Descargar Gratis en Google Play",
     },
   },
-} as const;
+};

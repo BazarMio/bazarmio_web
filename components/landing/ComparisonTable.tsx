@@ -1,3 +1,4 @@
+import React from "react";
 import { CheckCircle2, Minus } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import {
@@ -10,7 +11,11 @@ import {
   H6,
   P_SUBTITLE,
 } from "@/lib/theme";
-import type { ComparisonData } from "@/app/features/data";
+import type {
+  ComparisonData,
+  ComparisonRow,
+  ComparisonSection,
+} from "@/app/features/data";
 
 interface ComparisonTableProps {
   data: ComparisonData;
@@ -76,20 +81,17 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
               </thead>
 
               <tbody>
-                {data.sections.map((section, si) => (
-                  <>
+                {data.sections.map((section: ComparisonSection, si: number) => (
+                  <React.Fragment key={`section-${si}`}>
                     {/* Section header row */}
-                    <tr
-                      key={`section-${si}`}
-                      className="border-t border-bazarmio-gray bg-bazarmio-gray/20"
-                    >
+                    <tr className="border-t border-bazarmio-gray bg-bazarmio-gray/20">
                       <td colSpan={3} className={`${H6} px-5 py-2.5`}>
                         {section.title}
                       </td>
                     </tr>
 
                     {/* Feature rows */}
-                    {section.rows.map((row, ri) => (
+                    {section.rows.map((row: ComparisonRow, ri: number) => (
                       <tr
                         key={`row-${si}-${ri}`}
                         className="border-t border-bazarmio-gray/40 hover:bg-bazarmio-gray/10 transition-colors"
@@ -105,7 +107,7 @@ export function ComparisonTable({ data }: ComparisonTableProps) {
                         </td>
                       </tr>
                     ))}
-                  </>
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>

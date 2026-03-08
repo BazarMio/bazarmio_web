@@ -6,6 +6,7 @@ import { useSettings } from "@/context/SettingProvider";
 import { homeData } from "@/app/data";
 import * as ROUTES from "@/lib/routes";
 import { NAV_CONTAINER } from "@/lib/theme";
+import { GooglePlayBadge } from "@/components/landing/GooglePlayBadge";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -46,6 +47,7 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
+// update social links and legal nav based on language
 const socialLinks = [
   { label: "Facebook", href: "#", icon: FacebookIcon },
   { label: "Instagram", href: "#", icon: InstagramIcon },
@@ -54,12 +56,11 @@ const socialLinks = [
 
 export function Footer() {
   const { lang } = useSettings();
-  const { nav, footer } = homeData[lang];
+  const { footer } = homeData[lang];
 
   const navLinks = [
-    { href: ROUTES.HOME, label: nav.home },
-    { href: ROUTES.FEATURES, label: nav.features },
-    { href: ROUTES.EDUCATION, label: nav.education },
+    { href: ROUTES.TERMS, label: footer.LegalNav.terms },
+    { href: ROUTES.PRIVACY, label: footer.LegalNav.privacy },
   ];
 
   return (
@@ -73,6 +74,7 @@ export function Footer() {
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               {footer.tagline}
             </p>
+            <GooglePlayBadge />
           </div>
 
           {/* Nav links */}
@@ -85,7 +87,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors duration-200 min-h-0 min-w-0"
+                    className="text-sm text-gray-400 hover:text-bazarmio-lime transition-colors duration-200 min-h-0 min-w-0"
                   >
                     {link.label}
                   </Link>
@@ -105,7 +107,7 @@ export function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200 min-h-0 min-w-0"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-bazarmio-lime transition-all duration-200 min-h-0 min-w-0"
                 >
                   <Icon className="size-4" />
                 </a>

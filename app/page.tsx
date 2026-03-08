@@ -28,6 +28,7 @@ export default function Home() {
         ctaLink={ROUTES.FEATURES}
         ctaSecondaryText={content.hero.ctaSecondary}
         ctaSecondaryLink={ROUTES.EDUCATION}
+        showGooglePlayBadge
       />
 
       <FeaturesGrid
