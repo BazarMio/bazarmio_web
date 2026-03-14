@@ -1,5 +1,40 @@
 import { Lang } from "@/lib/types";
 
+export const privacyMetadata: Record<
+  Lang,
+  {
+    title: string;
+    description: string;
+    keywords: string;
+    openGraph: { title: string; description: string };
+  }
+> = {
+  en: {
+    title: "Privacy Policy | BazarMio by Mio Labs LLC",
+    description:
+      "BazarMio privacy policy. Free Plan users have zero data collection — everything stays on your device. Learn how Mio Labs LLC handles data for Premium cloud sync users.",
+    keywords:
+      "privacy policy, data protection, LOPDP, BazarMio, Mio Labs, Ecuador privacy law",
+    openGraph: {
+      title: "Privacy Policy | BazarMio by Mio Labs LLC",
+      description:
+        "Free Plan: zero data collection. Premium Plan: optional cloud sync with explicit consent.",
+    },
+  },
+  es: {
+    title: "Política de Privacidad | BazarMio de Mio Labs LLC",
+    description:
+      "Política de privacidad de BazarMio. El Plan Gratuito no recopila datos — todo permanece en tu dispositivo. Cómo Mio Labs LLC maneja datos del Plan Premium.",
+    keywords:
+      "política de privacidad, protección de datos, LOPDP, BazarMio, Mio Labs, ley de privacidad Ecuador",
+    openGraph: {
+      title: "Política de Privacidad | BazarMio de Mio Labs LLC",
+      description:
+        "Plan Gratuito: sin recopilación de datos. Plan Premium: sincronización cloud opcional con consentimiento explícito.",
+    },
+  },
+};
+
 type PolicySection = {
   title: string;
   content: string | string[];

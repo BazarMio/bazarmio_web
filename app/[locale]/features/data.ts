@@ -1,5 +1,41 @@
 import { Lang } from "@/lib/types";
 
+export const featuresMetadata: Record<
+  Lang,
+  {
+    title: string;
+    description: string;
+    keywords: string;
+    openGraph: { title: string; description: string };
+  }
+> = {
+  en: {
+    title: "Features | BazarMio — Inventory & Sales App for Small Shops",
+    description:
+      "See everything BazarMio can do: product catalog, barcode scanner, sales history, analytics, CSV/PDF exports, and offline-first operation. Free plan available.",
+    keywords:
+      "BazarMio features, inventory app, sales tracking, small business app, offline inventory, barcode scanner, Ecuador",
+    openGraph: {
+      title: "BazarMio Features — Free Inventory & Sales App",
+      description:
+        "Product catalog, stock alerts, sales analytics, CSV exports — all offline-first. Free to start, Pro at $6.99/month.",
+    },
+  },
+  es: {
+    title: "Funciones | BazarMio — App de Inventario y Ventas para Tiendas",
+    description:
+      "Descubre todo lo que BazarMio puede hacer: catálogo de productos, escáner de barras, historial de ventas, analíticas, exportación CSV/PDF y funcionamiento sin internet. Plan gratuito disponible.",
+    keywords:
+      "funciones BazarMio, app inventario, registro ventas, app pequeños negocios, inventario offline, escáner códigos, Ecuador",
+    openGraph: {
+      title: "Funciones de BazarMio — App de Inventario y Ventas Gratis",
+      description:
+        "Catálogo de productos, alertas de stock, analíticas de ventas, exportaciones CSV — sin internet. Gratis para empezar, Pro a $6.99/mes.",
+    },
+  },
+};
+
+
 type Hero = {
   title: string;
   subtitle: string;
@@ -112,9 +148,24 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       proTier: "Pro",
       sections: [
         {
+          title: "Price",
+          rows: [
+            {
+              feature: "Cost to use",
+              free: "Free",
+              pro: "$6.99/month",
+            },
+            {
+              feature: "Additional Inventory slots (one-time purchase)",
+              free: "$4.99",
+              pro: "$4.99",
+            },
+          ],
+        },
+        {
           title: "Inventories",
           rows: [
-            { feature: "Number of inventories", free: "1", pro: "10" },
+            { feature: "Number of inventories", free: "1", pro: "1" },
             { feature: "Edit / delete inventories", free: true, pro: true },
             { feature: "Color coded inventory icons", free: true, pro: true },
             { feature: "Active inventory switcher", free: true, pro: true },
@@ -284,9 +335,24 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       proTier: "Pro",
       sections: [
         {
+          title: "Precio",
+          rows: [
+            {
+              feature: "Costo de uso",
+              free: "Gratis",
+              pro: "$6.99/mes",
+            },
+            {
+              feature: "Espacios adicionales de inventario (compra única)",
+              free: "$4.99",
+              pro: "$4.99",
+            },
+          ],
+        },
+        {
           title: "Inventarios",
           rows: [
-            { feature: "Número de inventarios", free: "1", pro: "10" },
+            { feature: "Número de inventarios", free: "1", pro: "1" },
             { feature: "Editar / eliminar inventarios", free: true, pro: true },
             {
               feature: "Íconos de inventario con colores",

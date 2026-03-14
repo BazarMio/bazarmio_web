@@ -1,43 +1,65 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { Lang } from "./lib/types";
+import type { Lang } from "./lib/types";
+
+const locales: Lang[] = ["en", "es"];
+const defaultLocale: Lang = "en";
+
+function getLocale(request: NextRequest): Lang {
+  // Cookie takes priority (explicit user choice)
+  const cookieLocale = request.cookies.get("LOCALE")?.value as Lang | undefined;
+  if (cookieLocale && locales.includes(cookieLocale)) {
+    return cookieLocale;
+  }
+
+  // Fall back to Accept-Language header
+  const acceptLanguage = request.headers.get("accept-language");
+  if (acceptLanguage?.toLowerCase().includes("es")) {
+    return "es";
+  }
+
+  return defaultLocale;
+}
 
 export function proxy(request: NextRequest) {
-  // Get the locale from cookie or detect from browser
-  let locale = request.cookies.get("LOCALE")?.value as Lang | undefined;
+  const { pathname } = request.nextUrl;
 
-  // If no cookie is set, try to detect from Accept-Language header
-  if (!locale) {
-    const acceptLanguage = request.headers.get("accept-language");
-    locale = acceptLanguage?.toLowerCase().includes("es") ? "es" : "en";
-  }
+  // Check if pathname already has a valid locale prefix
+  const pathnameHasLocale = locales.some(
+    (locale) =>
+      pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  );
 
-  // Ensure locale is valid
-  if (locale !== "en" && locale !== "es") {
-    locale = "en";
-  }
-
-  const response = NextResponse.next();
-
-  // Set the cookie if it doesn't exist
-  if (!request.cookies.get("LOCALE")) {
-    response.cookies.set("LOCALE", locale, {
-      maxAge: 60 * 60 * 24 * 365, // 1 year
+  if (pathnameHasLocale) {
+    // Sync cookie with the locale in the URL
+    const urlLocale = pathname.split("/")[1] as Lang;
+    const response = NextResponse.next();
+    response.cookies.set("LOCALE", urlLocale, {
+      maxAge: 60 * 60 * 24 * 365,
       path: "/",
       sameSite: "lax",
     });
+    response.headers.set("x-locale", urlLocale);
+    return response;
   }
 
-  // Add locale to response headers for server components
-  response.headers.set("x-locale", locale);
+  // Redirect to locale-prefixed path
+  const locale = getLocale(request);
+  const newUrl = request.nextUrl.clone();
+  newUrl.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
+
+  const response = NextResponse.redirect(newUrl);
+  response.cookies.set("LOCALE", locale, {
+    maxAge: 60 * 60 * 24 * 365,
+    path: "/",
+    sameSite: "lax",
+  });
 
   return response;
 }
 
-// Configure which routes use middleware
 export const config = {
   matcher: [
-    // Match all routes except static files and API routes
-    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

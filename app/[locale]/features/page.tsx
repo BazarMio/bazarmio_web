@@ -1,12 +1,10 @@
-"use client";
-
 import { Hero } from "@/components/landing/Hero";
 import { FeaturesGrid } from "@/components/landing/FeaturesGrid";
 import { ComparisonTable } from "@/components/landing/ComparisonTable";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { featuresData } from "./data";
-import { useSettings } from "@/context/SettingProvider";
+import type { Lang } from "@/lib/types";
 import {
   SECTION_CTA,
   CONTAINER_CTA,
@@ -15,8 +13,11 @@ import {
   P_SUBTITLE,
 } from "@/lib/theme";
 
-export default function FeaturesPage() {
-  const { lang } = useSettings();
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function FeaturesPage({ params }: Props) {
+  const { locale } = await params;
+  const lang = (locale === "es" ? "es" : "en") as Lang;
   const content = featuresData[lang];
 
   return (

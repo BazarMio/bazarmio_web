@@ -1,25 +1,20 @@
-"use client";
-
-import { privacyPolicyData } from "./data";
-import { useSettings } from "@/context/SettingProvider";
+import { termsData } from "./data";
 import { renderContent } from "@/components/landing/legal-pages/RenderContent";
+import type { Lang } from "@/lib/types";
 
-export default function PrivacyPolicyPage() {
-  const { lang } = useSettings();
-  const content = privacyPolicyData[lang];
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function TermsPage({ params }: Props) {
+  const { locale } = await params;
+  const lang = (locale === "es" ? "es" : "en") as Lang;
+  const content = termsData[lang];
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
       <p className="text-sm text-muted-foreground mb-2">
         {content.effectiveDate}
       </p>
-      <h1 className="text-4xl font-bold mb-6">{content.title}</h1>
-
-      <p className="text-muted-foreground mb-4">{content.intro}</p>
-
-      <p className="border-l-4 border-primary pl-4 py-2 mb-8 font-medium">
-        {content.corePrinciple}
-      </p>
+      <h1 className="text-4xl font-bold mb-8">{content.title}</h1>
 
       {content.sections.map((section, i) => (
         <section key={i} className="mb-8">
@@ -35,6 +30,10 @@ export default function PrivacyPolicyPage() {
           ))}
         </section>
       ))}
+
+      <p className="text-sm text-muted-foreground mt-12 pt-6 border-t">
+        {content.copyright}
+      </p>
     </div>
   );
 }

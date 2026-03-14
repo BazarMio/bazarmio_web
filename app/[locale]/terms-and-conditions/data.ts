@@ -277,3 +277,39 @@ export const termsData: { [key in Lang]: TermsData } = {
     copyright: "© 2026 Mio Labs LLC. Todos los derechos reservados.",
   },
 } as const;
+
+export const termsMetadata: Record<
+  Lang,
+  {
+    title: string;
+    description: string;
+    keywords: string;
+    openGraph: { title: string; description: string };
+  }
+> = {
+  en: {
+    title: "Terms & Conditions | BazarMio by Mio Labs LLC",
+    description:
+      "Terms and Conditions for using BazarMio. Free Plan is fully offline with no account required. Premium Plan offers optional cloud sync via Google Play subscription.",
+    keywords:
+      "terms and conditions, terms of service, BazarMio, Mio Labs, inventory app, Wyoming LLC",
+    openGraph: {
+      title: "Terms & Conditions | BazarMio by Mio Labs LLC",
+      description:
+        "Legal agreement between you and Mio Labs LLC for use of the BazarMio mobile application.",
+    },
+  },
+  es: {
+    title: "Términos y Condiciones | BazarMio de Mio Labs LLC",
+    description:
+      "Términos y Condiciones de uso de BazarMio. El Plan Gratuito funciona sin conexión y sin cuenta. El Plan Premium ofrece sincronización cloud opcional por suscripción en Google Play.",
+    keywords:
+      "términos y condiciones, términos de servicio, BazarMio, Mio Labs, app inventario, Wyoming LLC",
+    openGraph: {
+      title: "Términos y Condiciones | BazarMio de Mio Labs LLC",
+      description:
+        "Acuerdo legal entre usted y Mio Labs LLC para el uso de la aplicación móvil BazarMio.",
+    },
+  },
+};
+

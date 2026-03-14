@@ -53,6 +53,41 @@ export type HomePageData = {
   bottomCTA: BottomCTA;
 };
 
+export const homeMetadata: Record<
+  Lang,
+  {
+    title: string;
+    description: string;
+    keywords: string;
+    openGraph: { title: string; description: string };
+  }
+> = {
+  en: {
+    title: "BazarMio — Free Inventory & Sales App for Small Shops in Ecuador",
+    description:
+      "Free offline inventory and sales app for small shops and street vendors in Ecuador. Track stock, record cash sales, and see your profits — no internet required.",
+    keywords:
+      "free inventory app, sales tracking, small shop app, Ecuador merchants, street vendor app, offline inventory, corner store app, BazarMio",
+    openGraph: {
+      title: "BazarMio — Free Inventory App. No Internet Required.",
+      description:
+        "Track stock, record sales, and see your profits — all offline. Built for small shops and street vendors in Ecuador. Free to download.",
+    },
+  },
+  es: {
+    title: "BazarMio — App Gratis de Inventario y Ventas para Tiendas en Ecuador",
+    description:
+      "App gratuita de inventario y ventas sin internet para tiendas pequeñas y vendedores en Ecuador. Controla tu stock, registra ventas en efectivo y ve tus ganancias — sin señal.",
+    keywords:
+      "app inventario gratis, registro de ventas, app tienda pequeña, comerciantes Ecuador, vendedores ambulantes, inventario sin internet, tienda de barrio, BazarMio",
+    openGraph: {
+      title: "BazarMio — App de Inventario Gratis. Sin Internet.",
+      description:
+        "Controla tu stock, registra ventas y ve tus ganancias — todo sin internet. Para tiendas pequeñas y vendedores en Ecuador. Gratis.",
+    },
+  },
+};
+
 export const homeData: { [key in Lang]: HomePageData } = {
   en: {
     nav: {

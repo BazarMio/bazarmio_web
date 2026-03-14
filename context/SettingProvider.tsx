@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   useTransition,
 } from "react";
 import { useRouter } from "next/navigation";
@@ -30,19 +29,6 @@ function setCookieLang(lang: Lang) {
   document.cookie = `LOCALE=${lang}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
 }
 
-/** Utility function to read language from cookie */
-function getCookieLang(): Lang | undefined {
-  const cookieLang = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("LOCALE="))
-    ?.split("=")[1] as Lang | undefined;
-
-  if (cookieLang && (cookieLang === "en" || cookieLang === "es")) {
-    return cookieLang;
-  }
-  return undefined;
-}
-
 export function SettingsProvider({
   children,
   initialLang = "en",
@@ -51,21 +37,18 @@ export function SettingsProvider({
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
-  // Read from cookie on mount (client-side)
-  useEffect(() => {
-    const cookieLang = getCookieLang();
-    if (cookieLang) {
-      setTimeout(() => setLangState(cookieLang), 0);
-    }
-  }, []);
-
   const setLang = (newLang: Lang) => {
     setLangState(newLang);
     setCookieLang(newLang);
 
     startTransition(() => {
-      // Refresh to update server components with new language
-      router.refresh();
+      // Replace locale segment in the current URL: /es/features → /en/features
+      const currentPath = window.location.pathname;
+      const newPath = currentPath.replace(
+        /^\/(en|es)(\/|$)/,
+        `/${newLang}$2`,
+      );
+      router.push(newPath);
     });
   };
 

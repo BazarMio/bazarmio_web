@@ -4,9 +4,11 @@ import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { useSettings } from "@/context/SettingProvider";
 import { homeData } from "@/app/data";
+import { localePath } from "@/lib/routes";
 import * as ROUTES from "@/lib/routes";
 import { NAV_CONTAINER } from "@/lib/theme";
 import { GooglePlayBadge } from "@/components/landing/GooglePlayBadge";
+import type { Lang } from "@/lib/types";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -47,20 +49,29 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-// update social links and legal nav based on language
 const socialLinks = [
   { label: "Facebook", href: "#", icon: FacebookIcon },
   { label: "Instagram", href: "#", icon: InstagramIcon },
   { label: "TikTok", href: "#", icon: TikTokIcon },
 ];
 
-export function Footer() {
+interface FooterProps {
+  locale: Lang;
+}
+
+export function Footer({ locale }: FooterProps) {
   const { lang } = useSettings();
-  const { footer } = homeData[lang];
+  // Use the live lang from context (switches instantly on language change)
+  // Fall back to server-rendered locale for initial render
+  const activeLang = lang || locale;
+  const { footer } = homeData[activeLang];
 
   const navLinks = [
-    { href: ROUTES.TERMS, label: footer.LegalNav.terms },
-    { href: ROUTES.PRIVACY, label: footer.LegalNav.privacy },
+    { href: localePath(activeLang, ROUTES.TERMS), label: footer.LegalNav.terms },
+    {
+      href: localePath(activeLang, ROUTES.PRIVACY),
+      label: footer.LegalNav.privacy,
+    },
   ];
 
   return (
@@ -70,7 +81,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-12 text-center md:text-left">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-3">
-            <Logo size="sm" />
+            <Logo size="sm" href={localePath(activeLang, ROUTES.HOME)} />
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               {footer.tagline}
             </p>

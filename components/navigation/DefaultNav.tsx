@@ -8,7 +8,6 @@ import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "./LanguageSelector";
 import { cn } from "@/lib/utils";
-import * as ROUTES from "@/lib/routes";
 import { NAV_CONTAINER, NAV_LINK, NAV_LINK_MOBILE } from "@/lib/theme";
 
 interface NavLink {
@@ -18,9 +17,10 @@ interface NavLink {
 
 interface DefaultNavProps {
   navLinks: NavLink[];
+  homeHref: string;
 }
 
-export function DefaultNav({ navLinks }: DefaultNavProps) {
+export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,7 +39,7 @@ export function DefaultNav({ navLinks }: DefaultNavProps) {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="shrink-0">
-              <Logo size="sm" />
+              <Logo size="sm" href={homeHref} />
             </div>
 
             {/* Desktop: Pill nav */}
@@ -97,7 +97,7 @@ export function DefaultNav({ navLinks }: DefaultNavProps) {
       >
         {/* Overlay header */}
         <div className="flex items-center justify-between px-4 h-16 border-b border-white/5 shrink-0">
-          <Logo size="sm" href={ROUTES.HOME} />
+          <Logo size="sm" href={homeHref} />
           <Button
             variant="ghost"
             size="icon"

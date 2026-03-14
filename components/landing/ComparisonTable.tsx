@@ -11,11 +11,11 @@ import {
   H6,
   P_SUBTITLE,
 } from "@/lib/theme";
-import type {
+import {
   ComparisonData,
   ComparisonRow,
   ComparisonSection,
-} from "@/app/features/data";
+} from "@/app/[locale]/features/data";
 
 interface ComparisonTableProps {
   data: ComparisonData;
