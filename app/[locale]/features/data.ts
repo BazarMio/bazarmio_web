@@ -35,7 +35,6 @@ export const featuresMetadata: Record<
   },
 };
 
-
 type Hero = {
   title: string;
   subtitle: string;
@@ -88,75 +87,52 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       {
         title: "Product Catalog",
         description:
-          "Organize your products with photos, prices, and descriptions. Search and filter to find items quickly.",
+          "Add products with photos, prices, and categories. Find anything in seconds with search and filters.",
         icon: "package",
       },
       {
-        title: "Inventory Control",
+        title: "Stock Control",
         description:
-          "Track stock levels in real-time. Get alerts when items are running low so you never miss a sale.",
+          "Always know what you have and what's running low. Get alerts before you run out of your best sellers.",
         icon: "clipboard-list",
       },
       {
-        title: "Quick Sales",
+        title: "Fast Sales",
         description:
-          "Ring up sales fast with an intuitive interface. Accept cash or digital payments.",
+          "Record cash sales in seconds. Scan a barcode or tap a product — your stock updates automatically.",
         icon: "shopping-cart",
       },
       {
         title: "Sales History",
         description:
-          "Review all past transactions. Track what's selling and identify your best customers.",
+          "See every sale you've made. Review what sold, when, and for how much — all in one place.",
         icon: "clock",
       },
       {
-        title: "Daily Reports",
+        title: "Simple Analytics",
         description:
-          "See your daily, weekly, and monthly performance. Understand trends and make informed decisions.",
+          "Know which days you sell the most, which products move fastest, and how much you're earning each month.",
         icon: "chart-bar",
       },
       {
-        title: "Multi-Device Sync",
+        title: "Works Without Internet",
         description:
-          "Access your data from any device. Changes sync instantly across all your devices.",
-        icon: "refresh",
-      },
-      {
-        title: "Low Stock Alerts",
-        description:
-          "Never run out of popular items. Get notified when inventory drops below your threshold.",
-        icon: "alert-triangle",
-      },
-      {
-        title: "Easy Setup",
-        description:
-          "Get started in minutes. Import products from a spreadsheet or add them one by one.",
-        icon: "zap",
-      },
-      {
-        title: "Works Offline",
-        description:
-          "Keep selling even without internet. Data syncs automatically when you're back online.",
+          "Sell confidently even with no signal. Everything saves directly to your phone — no connection needed.",
         icon: "wifi-off",
       },
     ],
     comparison: {
       title: "Free vs Pro",
-      subtitle:
-        "Everything you need to grow — start free, upgrade when you're ready",
+      subtitle: "Start free. Upgrade when your business is ready to grow.",
       freeTier: "Free",
       proTier: "Pro",
       sections: [
         {
-          title: "Price",
+          title: "Prices",
           rows: [
+            { feature: "Subscription", free: "$0", pro: "$6.99/mo" },
             {
-              feature: "Cost to use",
-              free: "Free",
-              pro: "$6.99/month",
-            },
-            {
-              feature: "Additional Inventory slots (one-time purchase)",
+              feature: "Additional inventory slots",
               free: "$4.99",
               pro: "$4.99",
             },
@@ -187,7 +163,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
               pro: true,
             },
             { feature: "Category management", free: true, pro: true },
-            { feature: "Profit margins calculator", free: true, pro: true },
+            { feature: "Profit margin calculator", free: true, pro: true },
             { feature: "Product sales trend chart", free: false, pro: true },
           ],
         },
@@ -224,11 +200,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             { feature: "Day of week breakdown chart", free: false, pro: true },
             { feature: "Inventory health dashboard", free: false, pro: true },
             { feature: "Product trend search", free: false, pro: true },
-            {
-              feature: "Top products & categories table",
-              free: true,
-              pro: true,
-            },
+            { feature: "Top products & categories", free: true, pro: true },
             { feature: "Payment method breakdown", free: true, pro: true },
           ],
         },
@@ -248,11 +220,11 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           title: "General",
           rows: [
             {
-              feature: "Offline first (no internet needed)",
+              feature: "Works offline — no internet needed",
               free: true,
               pro: true,
             },
-            { feature: "Spanish & English language", free: true, pro: true },
+            { feature: "Spanish & English", free: true, pro: true },
             { feature: "Light & dark theme", free: true, pro: true },
           ],
         },
@@ -275,75 +247,53 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       {
         title: "Catálogo de Productos",
         description:
-          "Organiza tus productos con fotos, precios y descripciones. Busca y filtra para encontrar artículos rápidamente.",
+          "Agrega productos con fotos, precios y categorías. Encuentra cualquier artículo en segundos con búsqueda y filtros.",
         icon: "package",
       },
       {
-        title: "Control de Inventario",
+        title: "Control de Stock",
         description:
-          "Rastrea los niveles de stock en tiempo real. Recibe alertas cuando los artículos se están agotando para no perder ventas.",
+          "Siempre sabe qué tienes y qué se está acabando. Recibe alertas antes de quedarte sin tus productos más vendidos.",
         icon: "clipboard-list",
       },
       {
         title: "Ventas Rápidas",
         description:
-          "Registra ventas rápidamente con una interfaz intuitiva. Acepta efectivo o pagos digitales.",
+          "Registra ventas en efectivo en segundos. Escanea un código o toca un producto — tu stock se actualiza solo.",
         icon: "shopping-cart",
       },
       {
         title: "Historial de Ventas",
         description:
-          "Revisa todas las transacciones pasadas. Rastrea qué se vende e identifica tus mejores clientes.",
+          "Ve cada venta que has hecho. Revisa qué se vendió, cuándo y por cuánto — todo en un solo lugar.",
         icon: "clock",
       },
       {
-        title: "Reportes Diarios",
+        title: "Reportes Simples",
         description:
-          "Ve tu desempeño diario, semanal y mensual. Entiende tendencias y toma decisiones informadas.",
+          "Sabe qué días vendes más, qué productos se mueven más rápido y cuánto estás ganando cada mes.",
         icon: "chart-bar",
-      },
-      {
-        title: "Sincronización Multi-Dispositivo",
-        description:
-          "Accede a tus datos desde cualquier dispositivo. Los cambios se sincronizan instantáneamente.",
-        icon: "refresh",
-      },
-      {
-        title: "Alertas de Stock Bajo",
-        description:
-          "Nunca te quedes sin artículos populares. Recibe notificaciones cuando el inventario baje del límite.",
-        icon: "alert-triangle",
-      },
-      {
-        title: "Configuración Fácil",
-        description:
-          "Comienza en minutos. Importa productos desde una hoja de cálculo o agrégalos uno por uno.",
-        icon: "zap",
       },
       {
         title: "Funciona Sin Internet",
         description:
-          "Sigue vendiendo sin internet. Los datos se sincronizan automáticamente cuando vuelves a estar en línea.",
+          "Vende con confianza aunque no tengas señal. Todo se guarda directo en tu celular — sin necesitar conexión.",
         icon: "wifi-off",
       },
     ],
     comparison: {
       title: "Gratis vs Pro",
       subtitle:
-        "Todo lo que necesitas para crecer — empieza gratis, mejora cuando estés listo",
+        "Empieza gratis. Sube de nivel cuando tu negocio esté listo para crecer.",
       freeTier: "Gratis",
       proTier: "Pro",
       sections: [
         {
-          title: "Precio",
+          title: "Costos",
           rows: [
+            { feature: "Suscripción", free: "$0", pro: "$6.99/mes" },
             {
-              feature: "Costo de uso",
-              free: "Gratis",
-              pro: "$6.99/mes",
-            },
-            {
-              feature: "Espacios adicionales de inventario (compra única)",
+              feature: "Espacios adicionales de inventario",
               free: "$4.99",
               pro: "$4.99",
             },
@@ -456,7 +406,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
               pro: true,
             },
             {
-              feature: "Tabla de mejores productos y categorías",
+              feature: "Mejores productos y categorías",
               free: true,
               pro: true,
             },
@@ -479,7 +429,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
               free: true,
               pro: true,
             },
-            { feature: "Idiomas español e inglés", free: true, pro: true },
+            { feature: "Español e inglés", free: true, pro: true },
             { feature: "Tema claro y oscuro", free: true, pro: true },
           ],
         },

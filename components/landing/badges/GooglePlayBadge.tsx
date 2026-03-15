@@ -16,18 +16,12 @@ export function GooglePlayBadge({ className }: GooglePlayBadgeProps) {
 
   const src =
     lang === "en"
-      ? "/GetItOnGooglePlay_Badge_Web_color_English.png"
-      : "/GetItOnGooglePlay_Badge_Web_color_Spanish-LATAM.png";
+      ? "/badges/GetItOnGooglePlay_Badge_Web_color_English.png"
+      : "/badges/GetItOnGooglePlay_Badge_Web_color_Spanish-LATAM.png";
 
   return (
     <Link href="#" className={cn("inline-block", className)}>
-      <Image
-        src={src}
-        alt={alt}
-        width={200}
-        height={59}
-        priority={false}
-      />
+      <Image src={src} alt={alt} width={200} height={59} priority={false} />
     </Link>
   );
 }

@@ -39,8 +39,10 @@ export default async function Home({ params }: Props) {
         ctaText={content.hero.cta}
         ctaLink={`/${lang}/features`}
         ctaSecondaryText={content.hero.ctaSecondary}
-        ctaSecondaryLink={`/${lang}/education`}
+        ctaSecondaryLink={`/${lang}/features`}
         showGooglePlayBadge
+        //when IOS is ready to launch, we can uncomment the line below to show the Apple Store badge
+        //showAppleStoreBadge
       />
 
       <FeaturesGrid

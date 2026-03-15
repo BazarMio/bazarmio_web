@@ -7,7 +7,7 @@ import { homeData } from "@/app/data";
 import { localePath } from "@/lib/routes";
 import * as ROUTES from "@/lib/routes";
 import { NAV_CONTAINER } from "@/lib/theme";
-import { GooglePlayBadge } from "@/components/landing/GooglePlayBadge";
+import { GooglePlayBadge } from "@/components/landing/badges/GooglePlayBadge";
 import type { Lang } from "@/lib/types";
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -67,7 +67,10 @@ export function Footer({ locale }: FooterProps) {
   const { footer } = homeData[activeLang];
 
   const navLinks = [
-    { href: localePath(activeLang, ROUTES.TERMS), label: footer.LegalNav.terms },
+    {
+      href: localePath(activeLang, ROUTES.TERMS),
+      label: footer.LegalNav.terms,
+    },
     {
       href: localePath(activeLang, ROUTES.PRIVACY),
       label: footer.LegalNav.privacy,

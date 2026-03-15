@@ -26,13 +26,17 @@ export function proxy(request: NextRequest) {
 
   // Check if pathname already has a valid locale prefix
   const pathnameHasLocale = locales.some(
-    (locale) =>
-      pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (pathnameHasLocale) {
     // Sync cookie with the locale in the URL
-    const urlLocale = pathname.split("/")[1] as Lang;
+    const pathSegments = pathname.split("/");
+    const urlLocale =
+      pathSegments[1] && locales.includes(pathSegments[1] as Lang)
+        ? (pathSegments[1] as Lang)
+        : defaultLocale;
+
     const response = NextResponse.next();
     response.cookies.set("LOCALE", urlLocale, {
       maxAge: 60 * 60 * 24 * 365,

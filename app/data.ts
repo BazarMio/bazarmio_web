@@ -25,6 +25,7 @@ type Hero = {
   cta: string;
   ctaSecondary: string;
   googlePlayAlt: string;
+  appleStoreAlt: string;
 };
 
 type Feature = {
@@ -75,7 +76,8 @@ export const homeMetadata: Record<
     },
   },
   es: {
-    title: "BazarMio — App Gratis de Inventario y Ventas para Tiendas en Ecuador",
+    title:
+      "BazarMio — App Gratis de Inventario y Ventas para Tiendas en Ecuador",
     description:
       "App gratuita de inventario y ventas sin internet para tiendas pequeñas y vendedores en Ecuador. Controla tu stock, registra ventas en efectivo y ve tus ganancias — sin señal.",
     keywords:
@@ -107,40 +109,42 @@ export const homeData: { [key in Lang]: HomePageData } = {
       },
     },
     hero: {
-      title: "Ditch the Notebook. Run Your Shop from Your Phone.",
+      title: "No More Notebooks. Run Your Shop from Your Phone.",
       subtitle:
-        "BazarMio is the free inventory and sales app built for small shops and street vendors in Ecuador. Track stock, record sales, and see your profits — even without internet.",
+        "BazarMio is the free inventory and sales app built for small shops and street vendors in Ecuador. Track stock, record cash sales, and see your profits — no internet needed.",
       cta: "Download Free",
       ctaSecondary: "See How It Works",
       googlePlayAlt:
         "Download BazarMio on Google Play — Free Inventory App for Small Shops",
+      appleStoreAlt:
+        "Download BazarMio on the App Store — Free Inventory App for Small Shops",
     },
     featuresPreview: {
-      title: "Inventory Management Simple Enough for Any Shop",
+      title: "Everything You Need to Run a Tighter Shop",
       subtitle:
-        "No accounting degree. No monthly fees to start. Just the tools small merchants actually need.",
+        "No accounting degree. No monthly fees to start. Just what small vendors actually need.",
       features: [
         {
-          title: "Inventory Tracking for Small Shops",
+          title: "Always Know What's Running Low",
           description:
-            "Always know what's in stock, what's running low, and what sells fastest — without touching a notebook.",
+            "See what's in stock, what's almost out, and what sells fastest — no notebook required.",
         },
         {
-          title: "Sales Recording Without Internet",
+          title: "Record Sales Without Internet",
           description:
-            "Log every cash sale instantly, even offline. Your data stays safe on your phone.",
+            "Log every cash sale instantly, even offline. Your data stays on your phone.",
         },
         {
-          title: "Sales Reports That Make Sense",
+          title: "Reports You Can Actually Read",
           description:
-            "See your daily revenue, best-selling products, and monthly trends in plain language — no spreadsheets needed.",
+            "Daily revenue, best sellers, monthly trends — in plain language, no spreadsheet needed.",
         },
       ],
     },
     bottomCTA: {
-      title: "Your shop runs on Hustle. Let BazarMio handle the numbers.",
+      title: "Your shop runs on hustle. Let BazarMio handle the numbers.",
       subtitle:
-        "Free to download. No paperwork. No learning curve. Just your  business, organized",
+        "Free to download. No paperwork. No learning curve. Just your business, organized.",
       ctaText: "Get Started for Free",
       ctaLink: "#",
     },
@@ -170,16 +174,18 @@ export const homeData: { [key in Lang]: HomePageData } = {
       ctaSecondary: "Ver Cómo Funciona",
       googlePlayAlt:
         "Descarga BazarMio en Google Play — App Gratuita de Inventario para Tiendas Pequeñas",
+      appleStoreAlt:
+        "Descarga BazarMio en la App Store — App Gratuita de Inventario para Tiendas Pequeñas",
     },
     featuresPreview: {
-      title: "Control de Inventario Tan Simple que Cualquiera Puede Usarlo",
+      title: "Todo lo que Necesitas para Manejar Mejor tu Negocio",
       subtitle:
         "Sin contabilidad. Sin pagos para empezar. Solo las herramientas que los vendedores de verdad necesitan.",
       features: [
         {
-          title: "Control de Stock para Tiendas Pequeñas",
+          title: "Siempre Sabes Qué Se Está Acabando",
           description:
-            "Siempre sabe qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
+            "Ve qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
         },
         {
           title: "Registra Ventas Sin Internet",
