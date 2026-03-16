@@ -39,7 +39,7 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="shrink-0">
-              <Logo size="sm" href={homeHref} />
+              <Logo size="md" href={homeHref} />
             </div>
 
             {/* Desktop: Pill nav */}
@@ -97,7 +97,7 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
       >
         {/* Overlay header */}
         <div className="flex items-center justify-between px-4 h-16 border-b border-white/5 shrink-0">
-          <Logo size="sm" href={homeHref} />
+          <Logo size="md" href={homeHref} />
           <Button
             variant="ghost"
             size="icon"

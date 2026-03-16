@@ -84,7 +84,7 @@ export function Footer({ locale }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-12 text-center md:text-left">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-3">
-            <Logo size="sm" href={localePath(activeLang, ROUTES.HOME)} />
+            <Logo size="lg" href={localePath(activeLang, ROUTES.HOME)} />
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               {footer.tagline}
             </p>
