@@ -167,7 +167,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       },
     },
     hero: {
-      title: "Olvida el Cuaderno. Maneja tu Tienda desde el Celular.",
+      title: "Olvida el cuaderno. Maneja tu tienda desde el celular.",
       subtitle:
         "BazarMio es la app gratuita de inventario y ventas para tiendas pequeñas y vendedores en Ecuador. Controla tu stock, registra tus ventas y ve cuánto ganaste — aunque no tengas internet.",
       cta: "Descargar Gratis",
@@ -178,24 +178,24 @@ export const homeData: { [key in Lang]: HomePageData } = {
         "Descarga BazarMio en la App Store — App Gratuita de Inventario para Tiendas Pequeñas",
     },
     featuresPreview: {
-      title: "Todo lo que Necesitas para Manejar Mejor tu Negocio",
+      title: "Todo lo que necesitas para manejar mejor tu negocio",
       subtitle:
-        "Sin contabilidad. Sin pagos para empezar. Solo las herramientas que los vendedores de verdad necesitan.",
+        "Olvidate de la contabilidad complicada y de los pagos para empezar. Aquí tienes solo lo esencial: las herramientas que hace que vender y llevar tu inventario sea rápido y sencillo",
       features: [
         {
-          title: "Siempre Sabes Qué Se Está Acabando",
+          title: "Actualiza tu inventario al instante",
           description:
-            "Ve qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
+            "Mira qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
         },
         {
           title: "Registra Ventas Sin Internet",
           description:
-            "Anota cada venta en efectivo al instante, aunque no tengas señal. Tus datos quedan guardados en tu celular.",
+            "Anota cada venta en efectivo al instante, aunque no tengas señal, tus datos quedan guardados en tu celular.",
         },
         {
           title: "Reportes de Ventas Fáciles de Entender",
           description:
-            "Ve tus ingresos del día, tus productos más vendidos y las tendencias del mes — en palabras simples, sin hojas de cálculo.",
+            "Mira tus ingresos del día, tus productos más vendidos y las tendencias del mes — en palabras simples, sin hojas de cálculo.",
         },
       ],
     },

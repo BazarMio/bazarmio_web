@@ -239,7 +239,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
   },
   es: {
     hero: {
-      title: "Todo lo que Tu Tienda Necesita — Gratis para Empezar",
+      title: "Todo lo que tu tienda necesita — empieza gratis",
       subtitle:
         "Control de inventario, registro de ventas y reportes diseñados para tiendas pequeñas y vendedores en Ecuador. Sin capacitación.",
     },
@@ -253,7 +253,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       {
         title: "Control de Stock",
         description:
-          "Siempre sabe qué tienes y qué se está acabando. Recibe alertas antes de quedarte sin tus productos más vendidos.",
+          "Siempre sabes qué tienes y qué se está acabando. Recibe alertas antes de quedarte sin tus productos más vendidos.",
         icon: "clipboard-list",
       },
       {
@@ -265,7 +265,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       {
         title: "Historial de Ventas",
         description:
-          "Ve cada venta que has hecho. Revisa qué se vendió, cuándo y por cuánto — todo en un solo lugar.",
+          "Mira cada venta que has hecho. Revisa qué se vendió, cuándo y por cuánto — todo en un solo lugar.",
         icon: "clock",
       },
       {
@@ -436,7 +436,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
       ],
     },
     cta: {
-      title: "Todo lo que necesitas. Nada que no uses.",
+      title: "Ordena tu negocio de manera simple y rápida",
       subtitle:
         "Gratis. Sin contratos, sin papeleos, sin necesitar internet. Solo tu negocio, en orden.",
       button: "Descargar Gratis en Google Play",
