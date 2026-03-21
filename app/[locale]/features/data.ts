@@ -141,7 +141,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
         {
           title: "Inventories",
           rows: [
-            { feature: "Number of inventories", free: "1", pro: "1" },
+            { feature: "Number of inventories", free: "1", pro: "2" },
             { feature: "Edit / delete inventories", free: true, pro: true },
             { feature: "Color coded inventory icons", free: true, pro: true },
             { feature: "Active inventory switcher", free: true, pro: true },
@@ -153,10 +153,10 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             { feature: "Add / edit / delete products", free: true, pro: true },
             {
               feature: "Product photos (camera / gallery)",
-              free: true,
+              free: false,
               pro: true,
             },
-            { feature: "Barcode scanner (SKU)", free: true, pro: true },
+            { feature: "Barcode scanner (SKU)", free: false, pro: true },
             {
               feature: "Stock tracking & low stock alerts",
               free: true,
@@ -172,13 +172,14 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           rows: [
             { feature: "Record multi-product sales", free: true, pro: true },
             { feature: "Price override per item", free: true, pro: true },
-            { feature: "Barcode scan to add to cart", free: true, pro: true },
+            { feature: "Barcode scan to add to cart", free: false, pro: true },
             {
               feature: "Void sales (with stock restore)",
               free: true,
               pro: true,
             },
-            { feature: "Full sale history", free: true, pro: true },
+            { feature: "Sale history (last 30 days)", free: true, pro: true },
+            { feature: "Yearly sale history", free: false, pro: true },
           ],
         },
         {
@@ -201,7 +202,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             { feature: "Inventory health dashboard", free: false, pro: true },
             { feature: "Product trend search", free: false, pro: true },
             { feature: "Top products & categories", free: true, pro: true },
-            { feature: "Payment method breakdown", free: true, pro: true },
+            { feature: "Payment method breakdown", free: false, pro: true },
           ],
         },
         {
@@ -302,7 +303,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
         {
           title: "Inventarios",
           rows: [
-            { feature: "Número de inventarios", free: "1", pro: "1" },
+            { feature: "Número de inventarios", free: "1", pro: "2" },
             { feature: "Editar / eliminar inventarios", free: true, pro: true },
             {
               feature: "Íconos de inventario con colores",
@@ -322,12 +323,12 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             },
             {
               feature: "Fotos de productos (cámara / galería)",
-              free: true,
+              free: false,
               pro: true,
             },
             {
               feature: "Escáner de código de barras (SKU)",
-              free: true,
+              free: false,
               pro: true,
             },
             {
@@ -363,7 +364,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             },
             {
               feature: "Escanear código de barras para agregar al carrito",
-              free: true,
+              free: false,
               pro: true,
             },
             {
@@ -371,7 +372,16 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
               free: true,
               pro: true,
             },
-            { feature: "Historial completo de ventas", free: true, pro: true },
+            {
+              feature: "Historial de ventas (últimos 30 días)",
+              free: true,
+              pro: true,
+            },
+            {
+              feature: "Historial de ventas (últimos 365 días)",
+              free: false,
+              pro: true,
+            },
           ],
         },
         {
@@ -410,7 +420,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
               free: true,
               pro: true,
             },
-            { feature: "Desglose por método de pago", free: true, pro: true },
+            { feature: "Desglose por método de pago", free: false, pro: true },
           ],
         },
         {

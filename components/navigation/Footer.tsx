@@ -9,6 +9,7 @@ import * as ROUTES from "@/lib/routes";
 import { NAV_CONTAINER } from "@/lib/theme";
 import { GooglePlayBadge } from "@/components/landing/badges/GooglePlayBadge";
 import type { Lang } from "@/lib/types";
+// import { AppleStoreBadge } from "../landing/badges/AppleStoreBadge";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -50,9 +51,21 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 const socialLinks = [
-  { label: "Facebook", href: "#", icon: FacebookIcon },
-  { label: "Instagram", href: "#", icon: InstagramIcon },
-  { label: "TikTok", href: "#", icon: TikTokIcon },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1DQf4MbtWJ/?mibextid=wwXIfr",
+    icon: FacebookIcon,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/bazarmioapp/",
+    icon: InstagramIcon,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@bazarmioapp",
+    icon: TikTokIcon,
+  },
 ];
 
 interface FooterProps {
@@ -61,8 +74,6 @@ interface FooterProps {
 
 export function Footer({ locale }: FooterProps) {
   const { lang } = useSettings();
-  // Use the live lang from context (switches instantly on language change)
-  // Fall back to server-rendered locale for initial render
   const activeLang = lang || locale;
   const { footer } = homeData[activeLang];
 
@@ -81,14 +92,13 @@ export function Footer({ locale }: FooterProps) {
     <footer className="bg-[#0d0d0d] border-t border-white/5">
       {/* Main footer content */}
       <div className={NAV_CONTAINER}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-12 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 py-12 text-center md:text-left">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <Logo size="lg" href={localePath(activeLang, ROUTES.HOME)} />
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               {footer.tagline}
             </p>
-            <GooglePlayBadge />
           </div>
 
           {/* Nav links */}
@@ -121,12 +131,24 @@ export function Footer({ locale }: FooterProps) {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-bazarmio-lime transition-all duration-200 min-h-0 min-w-0"
                 >
                   <Icon className="size-4" />
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Badges */}
+          <div className="flex flex-col items-center md:items-start gap-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+              {footer.downloads}
+            </p>
+            <GooglePlayBadge size="sm" />
+            {/* When IOS is ready to launch, we can uncomment the line below to show the Apple Store badge */}
+            {/* <AppleStoreBadge size="sm" /> */}
           </div>
         </div>
       </div>

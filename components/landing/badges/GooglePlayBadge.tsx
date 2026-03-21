@@ -8,9 +8,22 @@ import { cn } from "@/lib/utils";
 
 interface GooglePlayBadgeProps {
   className?: string;
+  size?: "sm" | "md" | "lg";
 }
 
-export function GooglePlayBadge({ className }: GooglePlayBadgeProps) {
+const badgeSizes: Record<
+  NonNullable<GooglePlayBadgeProps["size"]>,
+  { width: number; height: number }
+> = {
+  sm: { width: 160, height: 47 },
+  md: { width: 200, height: 59 },
+  lg: { width: 240, height: 71 },
+};
+
+export function GooglePlayBadge({
+  className,
+  size = "md",
+}: GooglePlayBadgeProps) {
   const { lang } = useSettings();
   const alt = homeData[lang].hero.googlePlayAlt;
 
@@ -19,9 +32,17 @@ export function GooglePlayBadge({ className }: GooglePlayBadgeProps) {
       ? "/badges/GetItOnGooglePlay_Badge_Web_color_English.png"
       : "/badges/GetItOnGooglePlay_Badge_Web_color_Spanish-LATAM.png";
 
+  const { width, height } = badgeSizes[size];
+
   return (
     <Link href="#" className={cn("inline-block", className)}>
-      <Image src={src} alt={alt} width={200} height={59} priority={false} />
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        priority={false}
+      />
     </Link>
   );
 }

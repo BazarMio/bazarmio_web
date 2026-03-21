@@ -15,6 +15,7 @@ type Footer = {
   tagline: string;
   navigate: string;
   followUs: string;
+  downloads: string;
   copyright: string;
   LegalNav: LegalNav;
 };
@@ -107,6 +108,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
         terms: "Terms and Conditions",
         privacy: "Privacy Policy",
       },
+      downloads: "Downloads",
     },
     hero: {
       title: "No More Notebooks. Run Your Shop from Your Phone.",
@@ -160,6 +162,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
         "App gratuita de inventario para tiendas pequeñas, vendedores ambulantes y negocios locales en Ecuador.",
       navigate: "Navegar",
       followUs: "Síguenos",
+      downloads: "Descargas",
       copyright: "© 2026 Mio Labs LLC. Todos los derechos reservados.",
       LegalNav: {
         terms: "Términos y Condiciones",
@@ -188,12 +191,12 @@ export const homeData: { [key in Lang]: HomePageData } = {
             "Mira qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
         },
         {
-          title: "Registra Ventas Sin Internet",
+          title: "Registra ventas sin internet",
           description:
             "Anota cada venta en efectivo al instante, aunque no tengas señal, tus datos quedan guardados en tu celular.",
         },
         {
-          title: "Reportes de Ventas Fáciles de Entender",
+          title: "Reportes de ventas fáciles",
           description:
             "Mira tus ingresos del día, tus productos más vendidos y las tendencias del mes — en palabras simples, sin hojas de cálculo.",
         },
