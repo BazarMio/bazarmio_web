@@ -5,7 +5,7 @@ const locales = ["en", "es"];
 const routes = [
   { path: "/", changeFrequency: "weekly" as const, priority: 1.0 },
   { path: "/features", changeFrequency: "monthly" as const, priority: 0.8 },
-  { path: "/education", changeFrequency: "monthly" as const, priority: 0.8 },
+  // { path: "/education", changeFrequency: "monthly" as const, priority: 0.8 },
   {
     path: "/privacy-policy",
     changeFrequency: "yearly" as const,

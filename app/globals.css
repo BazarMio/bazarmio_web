@@ -43,6 +43,23 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -140,7 +157,11 @@
 
   /* bazarmio-lime opacity variants */
   .bg-bazarmio-lime\/10 {
-    background-color: color-mix(in oklab, var(--bazarmio-lime) 10%, transparent);
+    background-color: color-mix(
+      in oklab,
+      var(--bazarmio-lime) 10%,
+      transparent
+    );
   }
 
   /* bazarmio-gray solid and opacity variants */
@@ -149,11 +170,19 @@
   }
 
   .bg-bazarmio-gray\/10 {
-    background-color: color-mix(in oklab, var(--bazarmio-gray) 10%, transparent);
+    background-color: color-mix(
+      in oklab,
+      var(--bazarmio-gray) 10%,
+      transparent
+    );
   }
 
   .bg-bazarmio-gray\/20 {
-    background-color: color-mix(in oklab, var(--bazarmio-gray) 20%, transparent);
+    background-color: color-mix(
+      in oklab,
+      var(--bazarmio-gray) 20%,
+      transparent
+    );
   }
 
   .border-bazarmio-gray {
@@ -165,7 +194,11 @@
   }
 
   .hover\:bg-bazarmio-gray\/10:hover {
-    background-color: color-mix(in oklab, var(--bazarmio-gray) 10%, transparent);
+    background-color: color-mix(
+      in oklab,
+      var(--bazarmio-gray) 10%,
+      transparent
+    );
   }
 
   .hover\:bg-lime:hover {
