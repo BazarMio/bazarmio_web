@@ -99,8 +99,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       education: "Education",
     },
     footer: {
-      tagline:
-        "Free inventory app for small shops, street vendors, and local merchants in Ecuador.",
+      tagline: "For the ones who keep the neighborhood alive.",
       navigate: "Navigate",
       followUs: "Follow Us",
       copyright: "© 2026 Mio Labs LLC. All rights reserved.",
@@ -158,8 +157,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       education: "Educación",
     },
     footer: {
-      tagline:
-        "App gratuita de inventario para tiendas pequeñas, vendedores ambulantes y negocios locales en Ecuador.",
+      tagline: "Para los que le dan vida al barrio.",
       navigate: "Navegar",
       followUs: "Síguenos",
       downloads: "Descargas",

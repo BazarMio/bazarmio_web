@@ -83,15 +83,14 @@ export const SHEET_BODY = "flex-1 overflow-y-auto px-6 py-16";
 
 /** Primary CTA button (large, for CTA sections) */
 export const BTN_PRIMARY_CTA =
-  "bg-lime text-black hover:bg-lime/90 font-semibold text-lg px-10 h-14";
+  "bg-lime text-black hover:bg-[#a8d824] font-semibold text-lg px-10 h-14";
 
 /** Primary hero button (responsive sizing) */
 export const BTN_PRIMARY_HERO =
-  "bg-lime text-black hover:bg-lime/90 font-semibold text-base md:text-lg px-8 h-12 md:h-14 min-w-[160px]";
-
+  "bg-lime text-black hover:bg-[#a8d824] font-semibold text-base md:text-lg px-8 h-12 md:h-14 min-w-[160px]";
 /** Secondary hero button (outline style) */
 export const BTN_SECONDARY_HERO =
-  "border-gray-600 text-white hover:bg-gray-800 font-semibold text-base md:text-lg px-8 h-12 md:h-14 min-w-[160px]";
+  "border-gray-600 text-white hover:bg-bazarmio-gray/20 hover:border-lime/50 hover:text-white focus-visible:text-white font-semibold text-base md:text-lg px-8 h-12 md:h-14 min-w-[160px]";
 
 /** ====================
  *  NAVIGATION

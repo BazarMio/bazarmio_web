@@ -33,20 +33,20 @@ export function LanguageSelector() {
           {languages[lang].code}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
+      <DropdownMenuContent align="end" className="w-32">
         <DropdownMenuRadioGroup
           value={lang}
           onValueChange={(value) => setLang(value as "en" | "es")}
         >
           <DropdownMenuRadioItem
             value="en"
-            className="hover:bg-primary hover:text-lime focus:bg-[--bazarmio-lime] focus:text-black"
+            className="hover:bg-bazarmio-gray/20 hover:text-lime focus:bg-[--bazarmio-lime] focus:text-black"
           >
             {languages.en.label}
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem
             value="es"
-            className="hover:bg-primary hover:text-lime focus:bg-[--bazarmio-lime] focus:text-black"
+            className="hover:bg-bazarmio-gray/20 hover:text-lime focus:bg-[--bazarmio-lime] focus:text-black"
           >
             {languages.es.label}
           </DropdownMenuRadioItem>
