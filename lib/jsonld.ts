@@ -194,6 +194,49 @@ export function getFeaturesJsonLd(options: FeaturesJsonLdOptions): object {
   };
 }
 
+type ContactPageJsonLdOptions = {
+  locale: string;
+  name: string;
+  description: string;
+  homeLabel: string;
+  breadcrumbLabel: string;
+  datePublished: string;
+};
+
+export function getContactPageJsonLd(options: ContactPageJsonLdOptions): object {
+  const { locale, name, description, homeLabel, breadcrumbLabel, datePublished } = options;
+  const url = `${BASE_URL}/${locale}/contact`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name,
+    description,
+    url,
+    inLanguage: locale,
+    datePublished,
+    dateModified: datePublished,
+    publisher: PUBLISHER,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: homeLabel,
+          item: `${BASE_URL}/${locale}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: breadcrumbLabel,
+          item: url,
+        },
+      ],
+    },
+  };
+}
+
 export function getWebPageJsonLd(options: WebPageJsonLdOptions): object {
   const {
     locale,
