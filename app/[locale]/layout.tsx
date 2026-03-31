@@ -54,6 +54,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const navLinks = [
     { href: `/${lang}`, label: navData.home },
     { href: `/${lang}/features`, label: navData.features },
+    { href: `/${lang}/contact`, label: navData.contact },
     // { href: `/${lang}/education`, label: navData.education },
   ];
 
