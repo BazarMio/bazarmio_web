@@ -58,12 +58,12 @@ const socialLinks = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/bazarmioapp/",
+    href: "https://www.instagram.com/bazarmio_app/",
     icon: InstagramIcon,
   },
   {
     label: "TikTok",
-    href: "https://www.tiktok.com/@bazarmioapp",
+    href: "https://www.tiktok.com/@bazarmio_app",
     icon: TikTokIcon,
   },
 ];
