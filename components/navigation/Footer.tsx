@@ -53,7 +53,7 @@ function TikTokIcon({ className }: { className?: string }) {
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/share/1DQf4MbtWJ/?mibextid=wwXIfr",
+    href: "https://www.facebook.com/profile.php?id=61560327663332",
     icon: FacebookIcon,
   },
   {
