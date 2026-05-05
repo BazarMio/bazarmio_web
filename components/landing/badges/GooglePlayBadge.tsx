@@ -35,7 +35,10 @@ export function GooglePlayBadge({
   const { width, height } = badgeSizes[size];
 
   return (
-    <Link href="#" className={cn("inline-block", className)}>
+    <Link
+      href="https://play.google.com/store/apps/details?id=com.bazarmio.app"
+      className={cn("inline-block", className)}
+    >
       <Image
         src={src}
         alt={alt}
