@@ -12,6 +12,7 @@ import {
   H2,
   P_SUBTITLE,
 } from "@/lib/theme";
+import { GOOGLE_PLAY_URL } from "@/lib/routes";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -33,7 +34,7 @@ export default async function FeaturesPage({ params }: Props) {
           <h2 className={H2}>{content.cta.title}</h2>
           <p className={P_SUBTITLE}>{content.cta.subtitle}</p>
           <Button asChild size="lg" className={BTN_PRIMARY_CTA}>
-            <Link href="#">{content.cta.button}</Link>
+            <Link href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">{content.cta.button}</Link>
           </Button>
         </div>
       </section>

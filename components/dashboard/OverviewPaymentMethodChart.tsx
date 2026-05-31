@@ -1,6 +1,7 @@
 "use client";
 
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer, Sector, Tooltip } from "recharts";
+import type { PieSectorShapeProps } from "recharts/types/polar/Pie";
 
 type OverviewPaymentMethodChartProps = {
   data: Array<{
@@ -26,6 +27,11 @@ function formatCurrency(value: number) {
 }
 
 export function OverviewPaymentMethodChart({ data, labels }: OverviewPaymentMethodChartProps) {
+  const activeIndex = data.reduce(
+    (maxIdx, entry, idx, arr) => (entry.totalAmount > arr[maxIdx].totalAmount ? idx : maxIdx),
+    0,
+  );
+
   return (
     <div className="grid gap-4 xl:grid-cols-[180px_minmax(0,1fr)] xl:items-center">
       <div className="h-[180px] w-full">
@@ -42,7 +48,6 @@ export function OverviewPaymentMethodChart({ data, labels }: OverviewPaymentMeth
                 if (name === "totalAmount") {
                   return [formatCurrency(Number(value ?? 0)), labels.amount];
                 }
-
                 return [item.payload?.count ?? 0, labels.count];
               }}
               labelFormatter={(value) => String(value ?? "")}
@@ -56,6 +61,13 @@ export function OverviewPaymentMethodChart({ data, labels }: OverviewPaymentMeth
               paddingAngle={4}
               stroke="rgba(17,17,17,0.8)"
               strokeWidth={2}
+              shape={({ index, outerRadius = 0, ...props }: PieSectorShapeProps) =>
+                index === activeIndex ? (
+                  <Sector {...props} outerRadius={outerRadius + 10} />
+                ) : (
+                  <Sector {...props} outerRadius={outerRadius} />
+                )
+              }
             >
               {data.map((entry, index) => (
                 <Cell key={entry.paymentMethod} fill={CHART_COLORS[index % CHART_COLORS.length]} />

@@ -61,13 +61,14 @@ export function FeaturesGrid({ title, subtitle, features }: FeaturesGridProps) {
             const Icon = feature.icon ? iconMap[feature.icon] : Package;
             
             return (
-              <Card 
+              <Card
                 key={index}
-                className={`${CARD_DARK_INTERACTIVE} group`}
+                className={`${CARD_DARK_INTERACTIVE} group relative overflow-hidden`}
               >
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <CardHeader>
-                  <div className="w-12 h-12 mb-4 rounded-lg bg-lime/10 flex items-center justify-center group-hover:bg-lime/20 transition-colors">
-                    {Icon && <Icon className="w-6 h-6 text-lime" />}
+                  <div className="w-14 h-14 mb-4 rounded-xl bg-lime/10 flex items-center justify-center group-hover:bg-lime/15 transition-colors">
+                    {Icon && <Icon className="w-7 h-7 text-lime" />}
                   </div>
                   <CardTitle className="text-xl text-white">
                     {feature.title}

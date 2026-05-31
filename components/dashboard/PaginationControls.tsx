@@ -4,6 +4,7 @@ import { dashboardComponentData } from "@/components/dashboard/data";
 import { Button } from "@/components/ui/button";
 import type { Lang } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type PaginationControlsProps = {
   page: number;
@@ -80,7 +81,11 @@ export function PaginationControls({
   return (
     <div className="flex flex-col gap-4 border-t border-white/5 pt-4 text-sm text-gray-400 sm:flex-row sm:items-center sm:justify-between">
       <p>
-        {copy.showingRange.replace("{start}", String(start)).replace("{end}", String(end))} <span className="text-white">{copy.of}</span> <span className="text-white">{total}</span> {copy.results}
+        {copy.showingRange
+          .replace("{start}", String(start))
+          .replace("{end}", String(end))}{" "}
+        <span className="text-white">{copy.of}</span>{" "}
+        <span className="text-white">{total}</span> {copy.results}
       </p>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -88,10 +93,16 @@ export function PaginationControls({
           asChild
           variant="ghost"
           size="sm"
-          className={cn("min-h-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white hover:bg-white/10", page <= 1 && "pointer-events-none opacity-40")}
+          className={cn(
+            "min-h-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white hover:bg-white/10 hover:text-primary",
+            page <= 1 && "pointer-events-none opacity-40",
+          )}
         >
-          <Link href={page <= 1 ? "#" : buildHref(page - 1)} aria-disabled={page <= 1}>
-            {copy.previous}
+          <Link
+            href={page <= 1 ? "#" : buildHref(page - 1)}
+            aria-disabled={page <= 1}
+          >
+            <ArrowLeft className="h-4 w-4" />
           </Link>
         </Button>
 
@@ -110,7 +121,7 @@ export function PaginationControls({
                 "min-h-0 rounded-lg px-3 py-2",
                 token === page
                   ? "bg-lime text-black hover:bg-lime/90 hover:text-black"
-                  : "border border-white/10 bg-white/5 text-white hover:bg-white/10",
+                  : "border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary",
               )}
             >
               <Link href={buildHref(token)}>{token}</Link>
@@ -123,12 +134,15 @@ export function PaginationControls({
           variant="ghost"
           size="sm"
           className={cn(
-            "min-h-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white hover:bg-white/10",
+            "min-h-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white hover:bg-white/10 hover:text-primary",
             page >= pageCount && "pointer-events-none opacity-40",
           )}
         >
-          <Link href={page >= pageCount ? "#" : buildHref(page + 1)} aria-disabled={page >= pageCount}>
-            {copy.next}
+          <Link
+            href={page >= pageCount ? "#" : buildHref(page + 1)}
+            aria-disabled={page >= pageCount}
+          >
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>
       </div>

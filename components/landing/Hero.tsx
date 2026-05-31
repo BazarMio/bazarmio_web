@@ -15,10 +15,12 @@ import { GooglePlayBadge } from "@/components/landing/badges/GooglePlayBadge";
 import { AppleStoreBadge } from "./badges/AppleStoreBadge";
 
 interface HeroProps {
+  eyebrow?: string;
   title: string;
   subtitle: string;
   ctaText?: string;
   ctaLink?: string;
+  ctaExternal?: boolean;
   ctaSecondaryText?: string;
   ctaSecondaryLink?: string;
   showGooglePlayBadge?: boolean;
@@ -27,10 +29,12 @@ interface HeroProps {
 }
 
 export function Hero({
+  eyebrow,
   title,
   subtitle,
   ctaText,
   ctaLink = "#",
+  ctaExternal = false,
   ctaSecondaryText,
   ctaSecondaryLink = "#",
   showGooglePlayBadge = false,
@@ -46,6 +50,13 @@ export function Hero({
       )}
     >
       <div className={cn(CONTAINER_MD, SPACE_Y_8)}>
+        {eyebrow && (
+          <div className="flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/5 px-4 py-1.5 text-xs font-medium tracking-wide text-lime">
+              {eyebrow}
+            </span>
+          </div>
+        )}
         <h1 className={H1_HERO}>{title}</h1>
 
         <p className={cn(P_HERO, CONTAINER_SM)}>{subtitle}</p>
@@ -54,7 +65,14 @@ export function Hero({
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             {ctaText && (
               <Button asChild size="lg" className={BTN_PRIMARY_HERO}>
-                <Link href={ctaLink}>{ctaText}</Link>
+                <Link
+                  href={ctaLink}
+                  {...(ctaExternal
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  {ctaText}
+                </Link>
               </Button>
             )}
 

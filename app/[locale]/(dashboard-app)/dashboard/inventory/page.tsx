@@ -18,7 +18,7 @@ import { nextApi, bazarmioApi, withQuery } from "@/lib/apiRoutes";
 import { DASHBOARD_INVENTORY, localePath } from "@/lib/routes";
 import type { DashboardProductsResponse } from "@/lib/types";
 
-import { dashboardInventoryData } from "./data";
+import { dashboardInventoryData, type DashboardInventoryPageData } from "./data";
 import {
   getDashboardBootstrap,
   getExportSearchParams,
@@ -38,6 +38,16 @@ function formatCurrency(value: number) {
     style: "currency",
     currency: "USD",
   }).format(value);
+}
+
+function getStockChip(
+  product: { isOutOfStock: boolean; isLowStock: boolean; isActive: boolean },
+  columns: DashboardInventoryPageData["table"]["columns"],
+) {
+  if (product.isOutOfStock) return { label: columns.outOfStock, tone: "danger" as const };
+  if (product.isLowStock) return { label: columns.lowStock, tone: "warning" as const };
+  if (product.isActive) return { label: columns.active, tone: "success" as const };
+  return { label: columns.inactive, tone: "neutral" as const };
 }
 
 export default async function DashboardInventoryPage({ params, searchParams }: Props) {
@@ -146,34 +156,37 @@ export default async function DashboardInventoryPage({ params, searchParams }: P
                 </TableCell>
               </TableRow>
             ) : (
-              products.items.map((product) => (
-                <TableRow key={product.id}>
-                  <TableCell>
-                    <div>
-                      <p className="font-medium text-white">{product.name}</p>
-                      <p className="text-xs text-gray-400">{product.sku || data.table.columns.noSku}</p>
-                    </div>
-                  </TableCell>
-                  <TableCell>{product.categoryName || data.table.columns.uncategorized}</TableCell>
-                  <TableCell>
-                    {product.currentStock} {product.unit}
-                  </TableCell>
-                  <TableCell>{product.minStock}</TableCell>
-                  <TableCell>{formatCurrency(product.defaultPrice)}</TableCell>
-                  <TableCell>{formatCurrency(product.costPrice)}</TableCell>
-                  <TableCell>
-                    {product.isOutOfStock ? (
-                      <StatusChip label={data.table.columns.outOfStock} tone="danger" />
-                    ) : product.isLowStock ? (
-                      <StatusChip label={data.table.columns.lowStock} tone="warning" />
-                    ) : product.isActive ? (
-                      <StatusChip label={data.table.columns.active} tone="success" />
-                    ) : (
-                      <StatusChip label={data.table.columns.inactive} tone="neutral" />
-                    )}
-                  </TableCell>
-                </TableRow>
-              ))
+              products.items.map((product) => {
+                const chip = getStockChip(product, data.table.columns);
+                const stockClass = product.isOutOfStock
+                  ? "text-red-400"
+                  : product.isLowStock
+                    ? "text-amber-400"
+                    : "text-white";
+
+                return (
+                  <TableRow key={product.id}>
+                    <TableCell>
+                      <div>
+                        <p className="font-medium text-white">{product.name}</p>
+                        <p className="text-xs text-gray-400">{product.sku || data.table.columns.noSku}</p>
+                      </div>
+                    </TableCell>
+                    <TableCell className={product.categoryName ? "text-white" : "text-gray-500"}>
+                      {product.categoryName || data.table.columns.uncategorized}
+                    </TableCell>
+                    <TableCell className={stockClass}>
+                      {product.currentStock} {product.unit}
+                    </TableCell>
+                    <TableCell>{product.minStock}</TableCell>
+                    <TableCell>{formatCurrency(product.defaultPrice)}</TableCell>
+                    <TableCell>{formatCurrency(product.costPrice)}</TableCell>
+                    <TableCell>
+                      <StatusChip label={chip.label} tone={chip.tone} />
+                    </TableCell>
+                  </TableRow>
+                );
+              })
             )}
           </TableBody>
         </Table>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { AlertCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -121,8 +122,12 @@ export function LoginForm({ locale, data }: LoginFormProps) {
       });
 
       if (!response.ok) {
+        if (response.status === 429) {
+          setError(data.error429);
+          return;
+        }
         const payload = (await response.json()) as { message?: string };
-        setError(payload.message || "Unable to sign in.");
+        setError(payload.message || data.error);
         return;
       }
 
@@ -209,14 +214,15 @@ export function LoginForm({ locale, data }: LoginFormProps) {
           maxLength={6}
           placeholder={data.pinPlaceholder}
           value={pin}
-          onChange={(event) => setPin(event.target.value)}
+          onChange={(event) => setPin(event.target.value.replace(/\D/g, ""))}
           className="border-white/10 bg-white/5 text-white placeholder:text-gray-500"
         />
       </div>
 
       {error ? (
-        <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-sm text-red-200">
-          {error}
+        <div className="flex items-start gap-2.5 rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2.5 text-sm text-red-200">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
+          <span>{error}</span>
         </div>
       ) : null}
 

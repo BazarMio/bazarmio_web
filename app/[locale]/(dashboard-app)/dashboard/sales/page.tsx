@@ -19,7 +19,7 @@ import { nextApi, bazarmioApi, withQuery } from "@/lib/apiRoutes";
 import { DASHBOARD_SALES, localePath } from "@/lib/routes";
 import type { DashboardSalesResponse } from "@/lib/types";
 
-import { dashboardSalesData } from "./data";
+import { dashboardSalesData, type DashboardSalesPageData } from "./data";
 import {
   getDashboardBootstrap,
   getExportSearchParams,
@@ -40,6 +40,18 @@ function formatCurrency(value: number) {
     style: "currency",
     currency: "USD",
   }).format(value);
+}
+
+function getPaymentMethodLabel(
+  method: string,
+  labels: DashboardSalesPageData["filters"]["paymentMethod"],
+) {
+  switch (method) {
+    case "efectivo": return labels.cash;
+    case "transferencia": return labels.transfer;
+    case "credito": return labels.credit;
+    default: return method;
+  }
 }
 
 
@@ -179,27 +191,32 @@ export default async function DashboardSalesPage({ params, searchParams }: Props
                 </TableCell>
               </TableRow>
             ) : (
-              sales.items.map((sale) => (
-                <TableRow key={sale.id}>
-                  {(() => {
-                    const saleStatus = getSaleStatusDisplay(sale.status, data.filters.status);
+              sales.items.map((sale) => {
+                const saleStatus = getSaleStatusDisplay(sale.status, data.filters.status);
+                const paymentLabel = getPaymentMethodLabel(sale.paymentMethod, data.filters.paymentMethod);
+                const saleDate = new Intl.DateTimeFormat(lang, {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                }).format(new Date(sale.createdAt));
 
-                    return (
-                      <>
-                  <TableCell>{new Date(sale.createdAt).toLocaleString()}</TableCell>
-                  <TableCell>{formatCurrency(sale.totalAmount)}</TableCell>
-                  <TableCell>{formatCurrency(sale.totalProfit)}</TableCell>
-                  <TableCell>{sale.itemCount}</TableCell>
-                  <TableCell className="capitalize">{sale.paymentMethod}</TableCell>
-                  <TableCell>
-                    <StatusChip label={saleStatus.label} tone={saleStatus.tone} />
-                  </TableCell>
-                  <TableCell>{sale.notes || data.table.columns.emptyNotes}</TableCell>
-                      </>
-                    );
-                  })()}
-                </TableRow>
-              ))
+                return (
+                  <TableRow key={sale.id}>
+                    <TableCell>{saleDate}</TableCell>
+                    <TableCell>{formatCurrency(sale.totalAmount)}</TableCell>
+                    <TableCell>{formatCurrency(sale.totalProfit)}</TableCell>
+                    <TableCell>{sale.itemCount}</TableCell>
+                    <TableCell>
+                      <StatusChip label={paymentLabel} tone="neutral" />
+                    </TableCell>
+                    <TableCell>
+                      <StatusChip label={saleStatus.label} tone={saleStatus.tone} />
+                    </TableCell>
+                    <TableCell className={sale.notes ? "text-white" : "text-gray-500"}>
+                      {sale.notes || data.table.columns.emptyNotes}
+                    </TableCell>
+                  </TableRow>
+                );
+              })
             )}
           </TableBody>
         </Table>

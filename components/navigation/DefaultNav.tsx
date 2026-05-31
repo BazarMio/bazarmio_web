@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { LogIn, Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "./LanguageSelector";
@@ -18,9 +18,10 @@ interface NavLink {
 interface DefaultNavProps {
   navLinks: NavLink[];
   homeHref: string;
+  loginHref: string;
 }
 
-export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
+export function DefaultNav({ navLinks, homeHref, loginHref }: DefaultNavProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,8 +54,9 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
                       href={link.href}
                       className={cn(
                         NAV_LINK,
+                        "rounded-full",
                         isActive
-                          ? "text-lime"
+                          ? "bg-white/10 text-lime"
                           : "text-gray-400 hover:text-white",
                       )}
                     >
@@ -65,8 +67,19 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
               </div>
             </div>
 
-            {/* Desktop: Language selector */}
-            <div className="hidden md:flex items-center shrink-0">
+            {/* Desktop: Login + Language selector */}
+            <div className="hidden md:flex items-center gap-1 shrink-0">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-12 w-12 text-gray-400 hover:text-lime hover:bg-white/10"
+                aria-label="Sign in to dashboard"
+                asChild
+              >
+                <Link href={loginHref}>
+                  <LogIn className="size-5" />
+                </Link>
+              </Button>
               <LanguageSelector />
             </div>
 
@@ -129,8 +142,16 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
           })}
         </nav>
 
-        {/* Overlay footer — language selector */}
-        <div className="flex items-center justify-center px-4 py-8 border-t border-white/5 shrink-0">
+        {/* Overlay footer — login + language selector */}
+        <div className="flex items-center justify-center gap-4 px-4 py-8 border-t border-white/5 shrink-0">
+          <Link
+            href={loginHref}
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+          >
+            <LogIn className="h-4 w-4" />
+            Dashboard
+          </Link>
           <LanguageSelector />
         </div>
       </div>

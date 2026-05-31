@@ -11,8 +11,6 @@ export type DashboardComponentData = {
     showingRange: string;
     of: string;
     results: string;
-    previous: string;
-    next: string;
   };
 };
 
@@ -28,8 +26,6 @@ export const dashboardComponentData: Record<Lang, DashboardComponentData> = {
       showingRange: "Showing {start} to {end}",
       of: "of",
       results: "results",
-      previous: "Previous",
-      next: "Next",
     },
   },
   es: {
@@ -43,8 +39,6 @@ export const dashboardComponentData: Record<Lang, DashboardComponentData> = {
       showingRange: "Mostrando {start} a {end}",
       of: "de",
       results: "resultados",
-      previous: "Anterior",
-      next: "Siguiente",
     },
   },
 };

@@ -14,6 +14,9 @@ export const DASHBOARD_ACCOUNT = "/dashboard/account";
 export const TERMS = "/terms-and-conditions";
 export const PRIVACY = "/privacy-policy";
 
+// External
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.bazarmio.app";
+
 // Returns a locale-prefixed path
 export function localePath(locale: Lang, path: string): string {
   return `/${locale}${path === "/" ? "" : path}`;

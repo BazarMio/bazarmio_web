@@ -22,6 +22,7 @@ type Footer = {
 };
 
 type Hero = {
+  eyebrow: string;
   title: string;
   subtitle: string;
   cta: string;
@@ -112,6 +113,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       downloads: "Downloads",
     },
     hero: {
+      eyebrow: "Free · Inventory App",
       title: "No More Notebooks. Run Your Shop from Your Phone.",
       subtitle:
         "BazarMio is the free inventory and sales app built for small shops and street vendors in Ecuador. Track stock, record cash sales, and see your profits — no internet needed.",
@@ -171,6 +173,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       },
     },
     hero: {
+      eyebrow: "Gratis · App de Inventario",
       title: "Olvida el cuaderno. Maneja tu tienda desde el celular.",
       subtitle:
         "BazarMio es la app gratuita de inventario y ventas para tiendas pequeñas y vendedores en Ecuador. Controla tu stock, registra tus ventas y ve cuánto ganaste — aunque no tengas internet.",

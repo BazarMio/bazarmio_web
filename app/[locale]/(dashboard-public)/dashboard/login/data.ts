@@ -14,6 +14,7 @@ export type DashboardLoginPageData = {
   submit: string;
   submitting: string;
   error: string;
+  error429: string;
 };
 
 export const dashboardLoginData: Record<Lang, DashboardLoginPageData> = {
@@ -32,6 +33,7 @@ export const dashboardLoginData: Record<Lang, DashboardLoginPageData> = {
     submit: "Sign in to dashboard",
     submitting: "Signing in...",
     error: "Unable to sign in right now. Please try again.",
+    error429: "Too many login attempts. Please wait a moment and try again.",
   },
   es: {
     title: "Iniciar sesion en el dashboard",
@@ -48,5 +50,6 @@ export const dashboardLoginData: Record<Lang, DashboardLoginPageData> = {
     submit: "Entrar al dashboard",
     submitting: "Entrando...",
     error: "No pudimos iniciar sesion en este momento. Intentalo otra vez.",
+    error429: "Demasiados intentos. Espera un momento e intenta de nuevo.",
   },
 };
