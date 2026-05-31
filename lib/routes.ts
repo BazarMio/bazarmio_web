@@ -4,6 +4,11 @@ import type { Lang } from "./types";
 export const HOME = "/";
 export const FEATURES = "/features";
 export const EDUCATION = "/education";
+export const DASHBOARD = "/dashboard";
+export const DASHBOARD_LOGIN = "/dashboard/login";
+export const DASHBOARD_INVENTORY = "/dashboard/inventory";
+export const DASHBOARD_SALES = "/dashboard/sales";
+export const DASHBOARD_ACCOUNT = "/dashboard/account";
 
 // Legal Pages
 export const TERMS = "/terms-and-conditions";

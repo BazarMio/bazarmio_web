@@ -153,7 +153,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             { feature: "Add / edit / delete products", free: true, pro: true },
             {
               feature: "Product photos (camera / gallery)",
-              free: false,
+              free: true,
               pro: true,
             },
             { feature: "Barcode scanner (SKU)", free: false, pro: true },
@@ -323,7 +323,7 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
             },
             {
               feature: "Fotos de productos (cámara / galería)",
-              free: false,
+              free: true,
               pro: true,
             },
             {
