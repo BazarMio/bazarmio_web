@@ -27,13 +27,14 @@ export const CONTAINER_CTA = "max-w-4xl mx-auto text-center space-y-6";
 export const SECTION_SPACING = "py-8 md:py-12";
 
 /** Section with horizontal padding */
-export const SECTION = "px-4 py-16 md:py-24";
+export const SECTION = "px-4 sm:px-6 lg:px-8 py-16 md:py-24";
 
 /** Hero section with extra padding */
-export const SECTION_HERO = "px-4 py-20 md:py-28";
+export const SECTION_HERO = "px-4 sm:px-6 lg:px-8 py-12 md:py-28";
 
 /** CTA/Dark section with background */
-export const SECTION_CTA = "px-4 py-16 md:py-24 bg-[--bazarmio-darker]";
+export const SECTION_CTA =
+  "px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-[--bazarmio-darker]";
 
 /** Extra padding for mobile nav */
 export const MOBILE_NAV_CLEARANCE = "pb-20 md:pb-0";

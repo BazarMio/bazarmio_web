@@ -29,6 +29,10 @@ type Hero = {
   ctaSecondary: string;
   googlePlayAlt: string;
   appleStoreAlt: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 };
 
 type Feature = {
@@ -123,6 +127,10 @@ export const homeData: { [key in Lang]: HomePageData } = {
         "Download BazarMio on Google Play — Free Inventory App for Small Shops",
       appleStoreAlt:
         "Download BazarMio on the App Store — Free Inventory App for Small Shops",
+      image: {
+        src: "https://images.bazarmio.app/web-assets/marketing-home/welcome_screen_en.png",
+        alt: "BazarMio Hero Image",
+      },
     },
     featuresPreview: {
       title: "Everything You Need to Run a Tighter Shop",
@@ -183,6 +191,10 @@ export const homeData: { [key in Lang]: HomePageData } = {
         "Descarga BazarMio en Google Play — App Gratuita de Inventario para Tiendas Pequeñas",
       appleStoreAlt:
         "Descarga BazarMio en la App Store — App Gratuita de Inventario para Tiendas Pequeñas",
+      image: {
+        src: "https://images.bazarmio.app/web-assets/marketing-home/welcome_screen_es.png",
+        alt: "BazarMio Hero Image",
+      },
     },
     featuresPreview: {
       title: "Todo lo que necesitas para manejar mejor tu negocio",

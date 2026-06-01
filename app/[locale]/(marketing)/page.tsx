@@ -44,6 +44,7 @@ export default async function Home({ params }: Props) {
         ctaSecondaryText={content.hero.ctaSecondary}
         ctaSecondaryLink={`/${lang}/features`}
         showGooglePlayBadge
+        image={content.hero.image}
         //when IOS is ready to launch, we can uncomment the line below to show the Apple Store badge
         //showAppleStoreBadge
       />
