@@ -43,6 +43,7 @@ type Feature = {
   title: string;
   description: string;
   icon?: string;
+  image?: { src: string; alt: string };
 };
 type CTA = {
   title: string;
@@ -89,30 +90,35 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
         description:
           "Add products with photos, prices, and categories. Find anything in seconds with search and filters.",
         icon: "package",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/product-catalog-en.png", alt: "BazarMio product catalog screen" },
       },
       {
         title: "Stock Control",
         description:
           "Always know what you have and what's running low. Get alerts before you run out of your best sellers.",
         icon: "clipboard-list",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/stock-control-en.png", alt: "BazarMio stock control screen" },
       },
       {
         title: "Fast Sales",
         description:
           "Record cash sales in seconds. Scan a barcode or tap a product — your stock updates automatically.",
         icon: "shopping-cart",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/fast-sale-en.png", alt: "BazarMio fast sales screen" },
       },
       {
         title: "Sales History",
         description:
           "See every sale you've made. Review what sold, when, and for how much — all in one place.",
         icon: "clock",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/sale-history-en.png", alt: "BazarMio sales history screen" },
       },
       {
         title: "Simple Analytics",
         description:
           "Know which days you sell the most, which products move fastest, and how much you're earning each month.",
         icon: "chart-bar",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/analytics-en.png", alt: "BazarMio analytics screen" },
       },
       {
         title: "Works Without Internet",
@@ -250,30 +256,35 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
         description:
           "Agrega productos con fotos, precios y categorías. Encuentra cualquier artículo en segundos con búsqueda y filtros.",
         icon: "package",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/product-catalog-es.png", alt: "Pantalla de catálogo de productos BazarMio" },
       },
       {
         title: "Control de Stock",
         description:
           "Siempre sabes qué tienes y qué se está acabando. Recibe alertas antes de quedarte sin tus productos más vendidos.",
         icon: "clipboard-list",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/stock-control-es.png", alt: "Pantalla de control de stock BazarMio" },
       },
       {
         title: "Ventas Rápidas",
         description:
           "Registra ventas en efectivo en segundos. Escanea un código o toca un producto — tu stock se actualiza solo.",
         icon: "shopping-cart",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/fast-sale-es.png", alt: "Pantalla de ventas rápidas BazarMio" },
       },
       {
         title: "Historial de Ventas",
         description:
           "Mira cada venta que has hecho. Revisa qué se vendió, cuándo y por cuánto — todo en un solo lugar.",
         icon: "clock",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/sale-history-es.png", alt: "Pantalla de historial de ventas BazarMio" },
       },
       {
         title: "Reportes Simples",
         description:
           "Sabe qué días vendes más, qué productos se mueven más rápido y cuánto estás ganando cada mes.",
         icon: "chart-bar",
+        image: { src: "https://images.bazarmio.app/web-assets/marketing-features/analytics-es.png", alt: "Pantalla de reportes BazarMio" },
       },
       {
         title: "Funciona Sin Internet",
