@@ -38,12 +38,24 @@ type Hero = {
 type Feature = {
   title: string;
   description: string;
+  icon?: string;
+  image?: { src: string; alt: string };
 };
 
 type FeaturesPreview = {
   title: string;
   subtitle: string;
   features: readonly Feature[];
+};
+
+type HowItWorksStep = {
+  title: string;
+  description: string;
+};
+
+type HowItWorks = {
+  title: string;
+  steps: readonly HowItWorksStep[];
 };
 
 type BottomCTA = {
@@ -57,6 +69,8 @@ export type HomePageData = {
   nav: Nav;
   footer: Footer;
   hero: Hero;
+  trustBar: readonly string[];
+  howItWorks: HowItWorks;
   featuresPreview: FeaturesPreview;
   bottomCTA: BottomCTA;
 };
@@ -132,6 +146,33 @@ export const homeData: { [key in Lang]: HomePageData } = {
         alt: "BazarMio Hero Image",
       },
     },
+    trustBar: [
+      "Works offline",
+      "No sign-up to start",
+      "Free forever",
+      "Your data stays on your phone",
+    ],
+    howItWorks: {
+      title: "How It Works",
+      steps: [
+        {
+          title: "Download free",
+          description: "No sign-up, no password — open it and you're ready to go.",
+        },
+        {
+          title: "Name your shop",
+          description: "That's your inventory created. Ten seconds, done.",
+        },
+        {
+          title: "Add what you sell",
+          description: "Name it, set a price, enter how many you have. Done in seconds per product.",
+        },
+        {
+          title: "Sell & update stock",
+          description: "Pick products sold, enter quantities, confirm. No math, no notebook, no guessing what's left.",
+        },
+      ],
+    },
     featuresPreview: {
       title: "Everything You Need to Run a Tighter Shop",
       subtitle:
@@ -141,16 +182,19 @@ export const homeData: { [key in Lang]: HomePageData } = {
           title: "Always Know What's Running Low",
           description:
             "See what's in stock, what's almost out, and what sells fastest — no notebook required.",
+          icon: "alert-triangle",
         },
         {
           title: "Record Sales Without Internet",
           description:
             "Log every cash sale instantly, even offline. Your data stays on your phone.",
+          icon: "wifi-off",
         },
         {
           title: "Reports You Can Actually Read",
           description:
             "Daily revenue, best sellers, monthly trends — in plain language, no spreadsheet needed.",
+          icon: "chart-bar",
         },
       ],
     },
@@ -196,6 +240,33 @@ export const homeData: { [key in Lang]: HomePageData } = {
         alt: "BazarMio Hero Image",
       },
     },
+    trustBar: [
+      "Funciona sin internet",
+      "Sin registro para empezar",
+      "Gratis para siempre",
+      "Tus datos en tu celular",
+    ],
+    howItWorks: {
+      title: "¿Cómo funciona?",
+      steps: [
+        {
+          title: "Descárgala gratis",
+          description: "Sin registro, sin contraseña — ábrela y ya puedes empezar.",
+        },
+        {
+          title: "Ponle nombre a tu tienda",
+          description: "Tu inventario queda listo. Diez segundos, listo.",
+        },
+        {
+          title: "Agrega lo que vendes",
+          description: "Nombre, precio y cantidad. Listo en segundos por producto.",
+        },
+        {
+          title: "Vende y actualiza tu stock",
+          description: "Elige los productos, pon las cantidades, confirma. Sin calculadora, sin cuaderno, sin adivinar.",
+        },
+      ],
+    },
     featuresPreview: {
       title: "Todo lo que necesitas para manejar mejor tu negocio",
       subtitle:
@@ -205,16 +276,19 @@ export const homeData: { [key in Lang]: HomePageData } = {
           title: "Actualiza tu inventario al instante",
           description:
             "Mira qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
+          icon: "alert-triangle",
         },
         {
           title: "Registra ventas sin internet",
           description:
             "Anota cada venta en efectivo al instante, aunque no tengas señal, tus datos quedan guardados en tu celular.",
+          icon: "wifi-off",
         },
         {
           title: "Reportes de ventas fáciles",
           description:
             "Mira tus ingresos del día, tus productos más vendidos y las tendencias del mes — en palabras simples, sin hojas de cálculo.",
+          icon: "chart-bar",
         },
       ],
     },

@@ -1,4 +1,6 @@
 import { Hero } from "@/components/landing/Hero";
+import { TrustBar } from "@/components/landing/TrustBar";
+import { HowItWorks } from "@/components/landing/HowItWorks";
 import { FeaturesGrid } from "@/components/landing/FeaturesGrid";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -48,6 +50,10 @@ export default async function Home({ params }: Props) {
         //when IOS is ready to launch, we can uncomment the line below to show the Apple Store badge
         //showAppleStoreBadge
       />
+
+      <TrustBar items={content.trustBar} />
+
+      <HowItWorks title={content.howItWorks.title} steps={content.howItWorks.steps} />
 
       <FeaturesGrid
         title={content.featuresPreview.title}
