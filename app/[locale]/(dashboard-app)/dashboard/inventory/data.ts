@@ -5,6 +5,10 @@ export type DashboardInventoryPageData = {
     title: string;
     description: string;
   };
+  error: {
+    title: string;
+    description: string;
+  };
   titlePrefix: string;
   countSingular: string;
   countPlural: string;
@@ -59,6 +63,10 @@ export const dashboardInventoryData: Record<Lang, DashboardInventoryPageData> = 
       description:
         "Create and sync an inventory from the mobile app to review product counts, stock status, and CSV exports here.",
     },
+    error: {
+      title: "Unable to load inventory",
+      description: "There was a problem fetching your inventory data. Please try refreshing.",
+    },
     titlePrefix: "Products in",
     countSingular: "product",
     countPlural: "products",
@@ -111,6 +119,10 @@ export const dashboardInventoryData: Record<Lang, DashboardInventoryPageData> = 
       title: "No hay inventario disponible",
       description:
         "Crea y sincroniza un inventario desde la app movil para revisar aqui cantidades de productos, estado del stock y exportaciones CSV.",
+    },
+    error: {
+      title: "No se pudo cargar el inventario",
+      description: "Hubo un problema al obtener los datos de tu inventario. Por favor, intenta actualizar la pagina.",
     },
     titlePrefix: "Productos en",
     countSingular: "producto",

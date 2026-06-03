@@ -124,7 +124,12 @@ export function PaginationControls({
                   : "border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-primary",
               )}
             >
-              <Link href={buildHref(token)}>{token}</Link>
+              <Link
+                href={buildHref(token)}
+                aria-current={token === page ? "page" : undefined}
+              >
+                {token}
+              </Link>
             </Button>
           ),
         )}

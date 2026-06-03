@@ -5,6 +5,10 @@ export type DashboardSalesPageData = {
     title: string;
     description: string;
   };
+  error: {
+    title: string;
+    description: string;
+  };
   titlePrefix: string;
   countSingular: string;
   countPlural: string;
@@ -56,6 +60,10 @@ export const dashboardSalesData: Record<Lang, DashboardSalesPageData> = {
       description:
         "Create and sync an inventory from the mobile app to review sales history, payment methods, and exportable reports.",
     },
+    error: {
+      title: "Unable to load sales",
+      description: "There was a problem fetching your sales data. Please try refreshing.",
+    },
     titlePrefix: "Sales in",
     countSingular: "sale",
     countPlural: "sales",
@@ -105,6 +113,10 @@ export const dashboardSalesData: Record<Lang, DashboardSalesPageData> = {
       title: "No hay inventario disponible",
       description:
         "Crea y sincroniza un inventario desde la app movil para revisar historial de ventas, medios de pago y reportes exportables.",
+    },
+    error: {
+      title: "No se pudieron cargar las ventas",
+      description: "Hubo un problema al obtener tus datos de ventas. Por favor, intenta actualizar la pagina.",
     },
     titlePrefix: "Ventas en",
     countSingular: "venta",

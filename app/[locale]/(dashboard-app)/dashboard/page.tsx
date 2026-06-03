@@ -28,25 +28,20 @@ import { bazarmioApi, withQuery } from "@/lib/apiRoutes";
 import { DASHBOARD, localePath } from "@/lib/routes";
 import type { DashboardOverviewResponse } from "@/lib/types";
 
+import { formatCurrency } from "@/lib/utils";
+
 import { dashboardOverviewData } from "./overview.data";
 import {
+  buildDateRangeParams,
   getDashboardBootstrap,
   getScalarSearchParam,
   resolveSelectedInventoryId,
-  toApiDateRange,
 } from "./utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
-
-function formatCurrency(value: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(value);
-}
 
 function getPaymentMethodLabel(
   paymentMethod: string,
@@ -98,21 +93,27 @@ export default async function DashboardOverviewPage({
   const startDate = getScalarSearchParam(currentParams.startDate) || "";
   const endDate = getScalarSearchParam(currentParams.endDate) || "";
   const query = new URLSearchParams();
-
-  if (startDate) {
-    query.set("startDate", toApiDateRange(startDate, false));
-  }
-
-  if (endDate) {
-    query.set("endDate", toApiDateRange(endDate, true));
-  }
+  buildDateRangeParams(query, startDate, endDate);
 
   const action = localePath(lang, DASHBOARD);
   const resetHref = `${action}?${new URLSearchParams({ inventory: inventoryId }).toString()}`;
 
   const overview = await getAuthedJson<DashboardOverviewResponse>(
     withQuery(bazarmioApi.dashboard.overview(inventoryId), query),
-  );
+  ).catch(() => null);
+
+  if (!overview) {
+    return (
+      <Card className="border-white/10 bg-white/5 text-white">
+        <CardContent className="py-12">
+          <EmptyState
+            title={data.error.title}
+            description={data.error.description}
+          />
+        </CardContent>
+      </Card>
+    );
+  }
 
   const hasDailySales = overview.dailySales.some(
     (day) => day.revenue > 0 || day.profit > 0 || day.count > 0,
@@ -356,28 +357,21 @@ export default async function DashboardOverviewPage({
           <CardTitle>{data.recentSales.title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table className="min-w-[540px]">
-            <TableHeader>
-              <TableRow>
-                <TableHead>{data.recentSales.columns.date}</TableHead>
-                <TableHead>{data.recentSales.columns.amount}</TableHead>
-                <TableHead>{data.recentSales.columns.profit}</TableHead>
-                <TableHead>{data.recentSales.columns.items}</TableHead>
-                <TableHead>{data.recentSales.columns.status}</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {overview.recentSales.length === 0 ? (
+          {overview.recentSales.length === 0 ? (
+            <EmptyState title={data.recentSales.empty} className="py-8" />
+          ) : (
+            <Table className="min-w-[540px]">
+              <TableHeader>
                 <TableRow>
-                  <TableCell
-                    colSpan={5}
-                    className="py-10 text-center text-gray-400"
-                  >
-                    {data.recentSales.empty}
-                  </TableCell>
+                  <TableHead>{data.recentSales.columns.date}</TableHead>
+                  <TableHead>{data.recentSales.columns.amount}</TableHead>
+                  <TableHead>{data.recentSales.columns.profit}</TableHead>
+                  <TableHead>{data.recentSales.columns.items}</TableHead>
+                  <TableHead>{data.recentSales.columns.status}</TableHead>
                 </TableRow>
-              ) : (
-                overview.recentSales.map((sale) => (
+              </TableHeader>
+              <TableBody>
+                {overview.recentSales.map((sale) => (
                   <TableRow key={sale.id}>
                     <TableCell>
                       {new Date(sale.createdAt).toLocaleString()}
@@ -392,10 +386,10 @@ export default async function DashboardOverviewPage({
                       })()}
                     </TableCell>
                   </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </CardContent>
       </Card>
     </div>

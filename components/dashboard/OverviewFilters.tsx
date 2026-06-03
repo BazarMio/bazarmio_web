@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,8 +24,15 @@ type OverviewFiltersProps = {
 };
 
 export function OverviewFilters({ action, inventoryId, values, resetHref, data }: OverviewFiltersProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   return (
-    <form action={action} method="get" className="flex flex-wrap items-center justify-end gap-2">
+    <form
+      action={action}
+      method="get"
+      className="flex flex-wrap items-center justify-end gap-2"
+      onSubmit={() => setIsSubmitting(true)}
+    >
       <input type="hidden" name="inventory" value={inventoryId} />
 
       <label htmlFor="overview-start-date" className="sr-only">
@@ -46,8 +57,13 @@ export function OverviewFilters({ action, inventoryId, values, resetHref, data }
         className="h-9 border-white/10 bg-white/5 text-white sm:w-[150px]"
       />
 
-      <Button type="submit" size="sm" className="min-h-0 rounded-lg px-3 py-2">
-        {data.apply}
+      <Button
+        type="submit"
+        size="sm"
+        disabled={isSubmitting}
+        className="min-h-0 rounded-lg px-3 py-2"
+      >
+        {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : data.apply}
       </Button>
       <Button
         asChild

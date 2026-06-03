@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 type EmptyStateProps = {
   title: string;
-  description: string;
+  description?: string;
   className?: string;
 };
 
@@ -20,7 +20,9 @@ export function EmptyState({ title, description, className }: EmptyStateProps) {
         <AlertCircle className="size-5" />
       </div>
       <h3 className="text-base font-semibold text-white">{title}</h3>
-      <p className="mt-2 max-w-md text-sm text-gray-400">{description}</p>
+      {description && (
+        <p className="mt-2 max-w-md text-sm text-gray-400">{description}</p>
+      )}
     </div>
   );
 }

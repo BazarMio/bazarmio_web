@@ -54,6 +54,23 @@ export function toUrlSearchParams(params: Record<string, string | string[] | und
   return searchParams;
 }
 
+export function buildDateRangeParams(
+  query: URLSearchParams,
+  startDate: string,
+  endDate: string,
+) {
+  if (startDate) query.set("startDate", toApiDateRange(startDate, false));
+  if (endDate) query.set("endDate", toApiDateRange(endDate, true));
+}
+
+export function setOrDelete(params: URLSearchParams, key: string, value: string) {
+  if (value) {
+    params.set(key, value);
+  } else {
+    params.delete(key);
+  }
+}
+
 export function getExportSearchParams(searchParams: URLSearchParams) {
   const exportSearchParams = new URLSearchParams(searchParams.toString());
 

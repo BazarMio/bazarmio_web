@@ -5,6 +5,10 @@ export type DashboardOverviewPageData = {
     title: string;
     description: string;
   };
+  error: {
+    title: string;
+    description: string;
+  };
   summary: {
     revenue: string;
     profit: string;
@@ -92,6 +96,10 @@ export const dashboardOverviewData: Record<Lang, DashboardOverviewPageData> = {
       title: "No inventory available",
       description:
         "Create and sync an inventory from the mobile app to populate the dashboard. Once your phone uploads data, reports and exports will appear here.",
+    },
+    error: {
+      title: "Unable to load dashboard",
+      description: "There was a problem loading your data. Please try refreshing.",
     },
     summary: {
       revenue: "Revenue",
@@ -182,6 +190,10 @@ export const dashboardOverviewData: Record<Lang, DashboardOverviewPageData> = {
       title: "No hay inventario disponible",
       description:
         "Crea y sincroniza un inventario desde la app movil para poblar el dashboard. Cuando tu telefono suba datos, los reportes y exportaciones apareceran aqui.",
+    },
+    error: {
+      title: "No se pudo cargar el dashboard",
+      description: "Hubo un problema al cargar tus datos. Por favor, intenta actualizar la pagina.",
     },
     summary: {
       revenue: "Ingresos",

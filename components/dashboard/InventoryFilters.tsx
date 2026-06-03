@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -57,12 +58,14 @@ export function InventoryFilters({
   const [stock, setStock] = useState<InventoryFiltersProps["values"]["stock"]>(
     values.stock,
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <form
       action={action}
       method="get"
       className="flex flex-wrap items-center justify-end gap-2"
+      onSubmit={() => setIsSubmitting(true)}
     >
       <input type="hidden" name="inventory" value={inventoryId} />
       <input type="hidden" name="status" value={status} />
@@ -129,8 +132,8 @@ export function InventoryFilters({
         </SelectContent>
       </Select>
 
-      <Button type="submit" size="sm" className="min-h-0 rounded-lg px-3 py-2">
-        {data.apply}
+      <Button type="submit" size="sm" disabled={isSubmitting} className="min-h-0 rounded-lg px-3 py-2">
+        {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : data.apply}
       </Button>
       <Button
         asChild

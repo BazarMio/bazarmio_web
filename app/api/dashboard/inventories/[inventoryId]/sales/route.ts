@@ -13,6 +13,11 @@ type RouteContext = {
 export async function GET(request: Request, context: RouteContext) {
   try {
     const { inventoryId } = await context.params;
+
+    if (!inventoryId || !/^[a-zA-Z0-9_-]+$/.test(inventoryId)) {
+      return NextResponse.json({ error: "Invalid inventory ID" }, { status: 400 });
+    }
+
     const searchParams = new URL(request.url).searchParams;
     const result = await getAuthedJson(
       withQuery(bazarmioApi.dashboard.sales(inventoryId), searchParams),

@@ -15,8 +15,12 @@ import {
 } from "@/components/ui/table";
 import { getAuthedJson } from "@/clients/bazarmio-client/api";
 import { nextApi, bazarmioApi, withQuery } from "@/lib/apiRoutes";
+import { redirect } from "next/navigation";
+
 import { DASHBOARD_INVENTORY, localePath } from "@/lib/routes";
 import type { DashboardProductsResponse } from "@/lib/types";
+
+import { formatCurrency } from "@/lib/utils";
 
 import { dashboardInventoryData, type DashboardInventoryPageData } from "./data";
 import {
@@ -25,6 +29,7 @@ import {
   getScalarSearchParam,
   parsePositiveInt,
   resolveSelectedInventoryId,
+  setOrDelete,
   toUrlSearchParams,
 } from "../utils";
 
@@ -32,13 +37,6 @@ type Props = {
   params: Promise<{ locale: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
-
-function formatCurrency(value: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(value);
-}
 
 function getStockChip(
   product: { isOutOfStock: boolean; isLowStock: boolean; isActive: boolean },
@@ -92,12 +90,7 @@ export default async function DashboardInventoryPage({ params, searchParams }: P
   currentSearchParams.set("pageSize", String(pageSize));
   currentSearchParams.set("status", status);
   currentSearchParams.set("stock", stock);
-
-  if (queryValue) {
-    currentSearchParams.set("query", queryValue);
-  } else {
-    currentSearchParams.delete("query");
-  }
+  setOrDelete(currentSearchParams, "query", queryValue);
 
   const action = localePath(lang, DASHBOARD_INVENTORY);
   const resetHref = `${action}?${new URLSearchParams({ inventory: inventoryId }).toString()}`;
@@ -108,7 +101,26 @@ export default async function DashboardInventoryPage({ params, searchParams }: P
 
   const products = await getAuthedJson<DashboardProductsResponse>(
     withQuery(bazarmioApi.dashboard.products(inventoryId), query),
-  );
+  ).catch(() => null);
+
+  if (!products) {
+    return (
+      <Card className="border-white/10 bg-white/5 text-white">
+        <CardContent className="py-12">
+          <EmptyState
+            title={data.error.title}
+            description={data.error.description}
+          />
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (products.meta.pageCount > 0 && page > products.meta.pageCount) {
+    const nextParams = new URLSearchParams(currentSearchParams.toString());
+    nextParams.set("page", String(products.meta.pageCount));
+    redirect(`?${nextParams.toString()}`);
+  }
 
   return (
     <Card className="border-white/10 bg-white/5 text-white">
@@ -136,68 +148,66 @@ export default async function DashboardInventoryPage({ params, searchParams }: P
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Table className="min-w-[760px]">
-          <TableHeader>
-            <TableRow>
-              <TableHead>{data.table.columns.product}</TableHead>
-              <TableHead>{data.table.columns.category}</TableHead>
-              <TableHead>{data.table.columns.stock}</TableHead>
-              <TableHead>{data.table.columns.minStock}</TableHead>
-              <TableHead>{data.table.columns.price}</TableHead>
-              <TableHead>{data.table.columns.cost}</TableHead>
-              <TableHead>{data.table.columns.status}</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {products.items.length === 0 ? (
-              <TableRow>
-                <TableCell colSpan={7} className="py-10 text-center text-gray-400">
-                  {data.table.empty}
-                </TableCell>
-              </TableRow>
-            ) : (
-              products.items.map((product) => {
-                const chip = getStockChip(product, data.table.columns);
-                const stockClass = product.isOutOfStock
-                  ? "text-red-400"
-                  : product.isLowStock
-                    ? "text-amber-400"
-                    : "text-white";
+        {products.items.length === 0 ? (
+          <EmptyState title={data.table.empty} className="py-8" />
+        ) : (
+          <>
+            <Table className="min-w-[760px]">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{data.table.columns.product}</TableHead>
+                  <TableHead>{data.table.columns.category}</TableHead>
+                  <TableHead>{data.table.columns.stock}</TableHead>
+                  <TableHead>{data.table.columns.minStock}</TableHead>
+                  <TableHead>{data.table.columns.price}</TableHead>
+                  <TableHead>{data.table.columns.cost}</TableHead>
+                  <TableHead>{data.table.columns.status}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {products.items.map((product) => {
+                  const chip = getStockChip(product, data.table.columns);
+                  const stockClass = product.isOutOfStock
+                    ? "text-red-400"
+                    : product.isLowStock
+                      ? "text-amber-400"
+                      : "text-white";
 
-                return (
-                  <TableRow key={product.id}>
-                    <TableCell>
-                      <div>
-                        <p className="font-medium text-white">{product.name}</p>
-                        <p className="text-xs text-gray-400">{product.sku || data.table.columns.noSku}</p>
-                      </div>
-                    </TableCell>
-                    <TableCell className={product.categoryName ? "text-white" : "text-gray-500"}>
-                      {product.categoryName || data.table.columns.uncategorized}
-                    </TableCell>
-                    <TableCell className={stockClass}>
-                      {product.currentStock} {product.unit}
-                    </TableCell>
-                    <TableCell>{product.minStock}</TableCell>
-                    <TableCell>{formatCurrency(product.defaultPrice)}</TableCell>
-                    <TableCell>{formatCurrency(product.costPrice)}</TableCell>
-                    <TableCell>
-                      <StatusChip label={chip.label} tone={chip.tone} />
-                    </TableCell>
-                  </TableRow>
-                );
-              })
-            )}
-          </TableBody>
-        </Table>
-        <PaginationControls
-          page={products.meta.page}
-          pageCount={products.meta.pageCount}
-          pageSize={products.meta.pageSize}
-          total={products.meta.total}
-          searchParams={currentSearchParams}
-          locale={lang}
-        />
+                  return (
+                    <TableRow key={product.id}>
+                      <TableCell>
+                        <div>
+                          <p className="font-medium text-white">{product.name}</p>
+                          <p className="text-xs text-gray-400">{product.sku || data.table.columns.noSku}</p>
+                        </div>
+                      </TableCell>
+                      <TableCell className={product.categoryName ? "text-white" : "text-gray-500"}>
+                        {product.categoryName || data.table.columns.uncategorized}
+                      </TableCell>
+                      <TableCell className={stockClass} title={chip.label}>
+                        {product.currentStock} {product.unit}
+                      </TableCell>
+                      <TableCell>{product.minStock}</TableCell>
+                      <TableCell>{formatCurrency(product.defaultPrice)}</TableCell>
+                      <TableCell>{formatCurrency(product.costPrice)}</TableCell>
+                      <TableCell>
+                        <StatusChip label={chip.label} tone={chip.tone} />
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+            <PaginationControls
+              page={products.meta.page}
+              pageCount={products.meta.pageCount}
+              pageSize={products.meta.pageSize}
+              total={products.meta.total}
+              searchParams={currentSearchParams}
+              locale={lang}
+            />
+          </>
+        )}
       </CardContent>
     </Card>
   );

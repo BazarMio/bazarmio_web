@@ -115,6 +115,7 @@ function InventorySwitcher({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [isSwitching, setIsSwitching] = useState(false);
 
   const selectedInventoryId =
     searchParams.get("inventory") ??
@@ -133,7 +134,9 @@ function InventorySwitcher({
   return (
     <Select
       value={selectedInventoryId}
+      disabled={isSwitching}
       onValueChange={(value) => {
+        setIsSwitching(true);
         const nextSearchParams = new URLSearchParams(searchParams.toString());
         nextSearchParams.set("inventory", value);
         nextSearchParams.delete("page");

@@ -1,6 +1,10 @@
 import type { Lang } from "@/lib/types";
 
 export type DashboardAccountPageData = {
+  error: {
+    title: string;
+    description: string;
+  };
   profile: {
     title: string;
     fullName: string;
@@ -29,6 +33,10 @@ export type DashboardAccountPageData = {
 
 export const dashboardAccountData: Record<Lang, DashboardAccountPageData> = {
   en: {
+    error: {
+      title: "Unable to load account",
+      description: "There was a problem loading your account data. Please try refreshing.",
+    },
     profile: {
       title: "Profile details",
       fullName: "Full name",
@@ -56,6 +64,10 @@ export const dashboardAccountData: Record<Lang, DashboardAccountPageData> = {
     },
   },
   es: {
+    error: {
+      title: "No se pudo cargar la cuenta",
+      description: "Hubo un problema al cargar los datos de tu cuenta. Por favor, intenta actualizar la pagina.",
+    },
     profile: {
       title: "Detalles del perfil",
       fullName: "Nombre completo",

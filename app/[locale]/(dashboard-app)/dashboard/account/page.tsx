@@ -1,8 +1,10 @@
 import { Info } from "lucide-react";
+import { EmptyState } from "@/components/dashboard/EmptyState";
 import { StatusChip } from "@/components/dashboard/StatusChip";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDashboardModeTone, getSubscriptionTone } from "@/lib/chip-status";
 import type { Lang } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 import { dashboardAccountData } from "./data";
 import { getDashboardBootstrap, getDashboardUserProfile } from "../utils";
@@ -14,13 +16,28 @@ type Props = {
 function DisplayField({ label, value }: { label: string; value: string }) {
   return (
     <div className="space-y-1">
-      <p className="text-xs font-medium uppercase tracking-wide text-gray-500">{label}</p>
-      <p className="text-sm font-medium text-white">{value || "—"}</p>
+      <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+        {label}
+      </p>
+      <p
+        className={cn(
+          "text-sm font-medium",
+          value ? "text-white" : "text-gray-500",
+        )}
+      >
+        {value || "—"}
+      </p>
     </div>
   );
 }
 
-function PlanRow({ label, children }: { label: string; children: React.ReactNode }) {
+function PlanRow({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex items-center justify-between gap-3 py-2.5">
       <span className="text-sm text-gray-400">{label}</span>
@@ -35,8 +52,21 @@ export default async function DashboardAccountPage({ params }: Props) {
   const data = dashboardAccountData[lang];
   const [bootstrap, profile] = await Promise.all([
     getDashboardBootstrap(),
-    getDashboardUserProfile(),
+    getDashboardUserProfile().catch(() => null),
   ]);
+
+  if (!profile) {
+    return (
+      <Card className="border-white/10 bg-white/5 text-white">
+        <CardContent className="py-12">
+          <EmptyState
+            title={data.error.title}
+            description={data.error.description}
+          />
+        </CardContent>
+      </Card>
+    );
+  }
 
   const lastSynced = bootstrap.dashboard.lastSyncedAt
     ? new Intl.DateTimeFormat(lang, {
@@ -53,12 +83,24 @@ export default async function DashboardAccountPage({ params }: Props) {
         </CardHeader>
         <CardContent className="grid gap-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <DisplayField label={data.profile.fullName} value={profile.user.fullName} />
+            <DisplayField
+              label={data.profile.fullName}
+              value={profile.user.fullName}
+            />
           </div>
-          <DisplayField label={data.profile.phoneNumber} value={profile.user.phoneNumber} />
-          <DisplayField label={data.profile.email} value={profile.user.email || ""} />
+          <DisplayField
+            label={data.profile.phoneNumber}
+            value={profile.user.phoneNumber}
+          />
+          <DisplayField
+            label={data.profile.email}
+            value={profile.user.email || ""}
+          />
           <div className="sm:col-span-2">
-            <DisplayField label={data.profile.businessName} value={profile.user.businessName || ""} />
+            <DisplayField
+              label={data.profile.businessName}
+              value={profile.user.businessName || ""}
+            />
           </div>
         </CardContent>
       </Card>
@@ -102,12 +144,16 @@ export default async function DashboardAccountPage({ params }: Props) {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between gap-3">
-              <span className="text-sm text-gray-400">{data.snapshot.lastSynced}</span>
+              <span className="text-sm text-gray-400">
+                {data.snapshot.lastSynced}
+              </span>
               <span className="text-sm text-white">{lastSynced}</span>
             </div>
             <div className="flex gap-2.5 rounded-lg border border-white/10 bg-white/5 p-3">
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-gray-400" />
-              <p className="text-xs leading-relaxed text-gray-400">{data.snapshot.archiveNote}</p>
+              <p className="text-xs leading-relaxed text-gray-400">
+                {data.snapshot.archiveNote}
+              </p>
             </div>
           </CardContent>
         </Card>
