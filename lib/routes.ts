@@ -11,6 +11,8 @@ export const DASHBOARD_SALES = "/dashboard/sales";
 export const DASHBOARD_ACCOUNT = "/dashboard/account";
 
 // Legal Pages
+export const FAQ = "/faq";
+export const CONTACT = "/contact";
 export const TERMS = "/terms-and-conditions";
 export const PRIVACY = "/privacy-policy";
 

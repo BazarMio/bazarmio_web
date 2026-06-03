@@ -3,6 +3,7 @@ import { Lang } from "@/lib/types";
 type Nav = {
   home: string;
   features: string;
+  faq: string;
   contact: string;
   education: string;
 };
@@ -116,6 +117,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
     nav: {
       home: "Home",
       features: "Features",
+      faq: "FAQ",
       contact: "Contact",
       education: "Education",
     },
@@ -210,6 +212,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
     nav: {
       home: "Inicio",
       features: "Funciones",
+      faq: "FAQ",
       contact: "Contacto",
       education: "Educación",
     },
