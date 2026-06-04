@@ -152,7 +152,7 @@ export default async function DashboardInventoryPage({ params, searchParams }: P
           <EmptyState title={data.table.empty} className="py-8" />
         ) : (
           <>
-            <Table className="min-w-[760px]">
+            <Table className="min-w-190">
               <TableHeader>
                 <TableRow>
                   <TableHead>{data.table.columns.product}</TableHead>

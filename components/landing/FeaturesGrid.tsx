@@ -83,12 +83,12 @@ export function FeaturesGrid({ title, subtitle, features }: FeaturesGridProps) {
                     "group relative overflow-hidden flex flex-row h-40 md:h-64",
                   )}
                 >
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-lime/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* Content */}
                   <div className="flex flex-col justify-center gap-2 lg:gap-3 p-4 lg:p-6 flex-1 min-w-0">
                     <div className="flex items-center gap-2 lg:flex-col lg:items-start">
-                      <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-lime/10 flex items-center justify-center group-hover:bg-lime/15 transition-colors flex-shrink-0">
+                      <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-lime/10 flex items-center justify-center group-hover:bg-lime/15 transition-colors shrink-0">
                         {Icon && <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-lime" />}
                       </div>
                       <h3 className="text-sm md:text-base font-semibold text-white lg:mt-3">
@@ -116,7 +116,7 @@ export function FeaturesGrid({ title, subtitle, features }: FeaturesGridProps) {
                 key={index}
                 className={`${CARD_DARK_INTERACTIVE} group relative overflow-hidden`}
               >
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-lime/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="p-6 flex flex-col gap-4">
                   <div className="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center group-hover:bg-lime/15 transition-colors">
                     {Icon && <Icon className="w-5 h-5 text-lime" />}

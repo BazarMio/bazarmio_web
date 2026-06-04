@@ -66,6 +66,17 @@ type BottomCTA = {
   ctaLink: string;
 };
 
+type FaqTeaserItem = {
+  question: string;
+  answer: string;
+};
+
+type FaqTeaser = {
+  title: string;
+  ctaText: string;
+  items: readonly FaqTeaserItem[];
+};
+
 export type HomePageData = {
   nav: Nav;
   footer: Footer;
@@ -73,6 +84,7 @@ export type HomePageData = {
   trustBar: readonly string[];
   howItWorks: HowItWorks;
   featuresPreview: FeaturesPreview;
+  faqTeaser: FaqTeaser;
   bottomCTA: BottomCTA;
 };
 
@@ -200,6 +212,27 @@ export const homeData: { [key in Lang]: HomePageData } = {
         },
       ],
     },
+    faqTeaser: {
+      title: "Common Questions",
+      ctaText: "See all questions →",
+      items: [
+        {
+          question: "Is BazarMio free?",
+          answer:
+            "Yes, forever. The free plan includes 1 inventory and everything you need to run your business — no hidden fees. Cloud backup and advanced analytics are available on Premium at $6.99/month.",
+        },
+        {
+          question: "Does the app work without internet?",
+          answer:
+            "Always. BazarMio is built to work fully offline — record sales, manage inventory, and view your reports without needing a connection. Internet is only needed if you choose to sync to the cloud on Premium.",
+        },
+        {
+          question: "What happens to my data if I cancel Premium?",
+          answer:
+            "Your data is always yours. If you cancel, cloud sync is disabled but everything stays safely on your phone. Nothing gets deleted.",
+        },
+      ],
+    },
     bottomCTA: {
       title: "Your shop runs on hustle. Let BazarMio handle the numbers.",
       subtitle:
@@ -292,6 +325,27 @@ export const homeData: { [key in Lang]: HomePageData } = {
           description:
             "Mira tus ingresos del día, tus productos más vendidos y las tendencias del mes — en palabras simples, sin hojas de cálculo.",
           icon: "chart-bar",
+        },
+      ],
+    },
+    faqTeaser: {
+      title: "Preguntas frecuentes",
+      ctaText: "Ver todas las preguntas →",
+      items: [
+        {
+          question: "¿BazarMio es gratis?",
+          answer:
+            "Sí, para siempre. El plan gratuito incluye 1 inventario y todo lo que necesitas para manejar tu negocio — sin costos ocultos. El respaldo en la nube y las analíticas avanzadas están disponibles en Premium por $6.99/mes.",
+        },
+        {
+          question: "¿La app funciona sin internet?",
+          answer:
+            "Siempre. BazarMio está diseñada para funcionar completamente sin internet — registra ventas, gestiona tu inventario y ve tus reportes sin necesitar conexión. El internet solo es necesario si eliges sincronizar tus datos con la nube en Premium.",
+        },
+        {
+          question: "¿Qué pasa con mis datos si cancelo el plan Premium?",
+          answer:
+            "Tus datos siempre son tuyos. Si cancelas, la sincronización en la nube se desactiva pero todo permanece guardado en tu celular. No se elimina nada.",
         },
       ],
     },

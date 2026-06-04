@@ -1,7 +1,7 @@
 import { DefaultNav } from "@/components/navigation/DefaultNav";
 import { Footer } from "@/components/navigation/Footer";
 import { homeData } from "@/app/data";
-import { localePath, DASHBOARD_LOGIN, FAQ } from "@/lib/routes";
+import { localePath, FAQ } from "@/lib/routes";
 import type { Lang } from "@/lib/types";
 
 type Props = {
@@ -24,7 +24,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <>
-      <DefaultNav navLinks={navLinks} homeHref={`/${lang}`} loginHref={localePath(lang, DASHBOARD_LOGIN)} />
+      <DefaultNav navLinks={navLinks} homeHref={`/${lang}`} />
       <main className="min-h-screen">{children}</main>
       <Footer locale={lang} />
     </>

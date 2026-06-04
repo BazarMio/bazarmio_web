@@ -14,7 +14,7 @@ interface HowItWorksProps {
 function Step({ step, index }: { step: HowItWorksStep; index: number }) {
   return (
     <div className="flex flex-col items-center text-center gap-4 w-48 xl:w-56">
-      <div className="w-12 h-12 rounded-full border border-lime bg-[--bazarmio-darker] flex items-center justify-center flex-shrink-0">
+      <div className="w-12 h-12 rounded-full border border-lime bg-[--bazarmio-darker] flex items-center justify-center shrink-0">
         <span className="text-lg font-bold text-white">{index + 1}</span>
       </div>
       <div className="space-y-2">
@@ -27,7 +27,7 @@ function Step({ step, index }: { step: HowItWorksStep; index: number }) {
 
 function Arrow() {
   return (
-    <div className="flex-shrink-0 w-16 xl:w-20 pt-2">
+    <div className="shrink-0 w-16 xl:w-20 pt-2">
       <Image
         src="/design-utils/right-arrow.svg"
         alt=""

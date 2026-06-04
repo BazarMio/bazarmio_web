@@ -51,6 +51,11 @@ type CTA = {
   button: string;
 };
 
+type FaqCta = {
+  text: string;
+  ctaText: string;
+};
+
 export type ComparisonRow = {
   feature: string;
   free: boolean | string;
@@ -74,6 +79,7 @@ export type FeaturesPageData = {
   hero: Hero;
   features: readonly Feature[];
   comparison: ComparisonData;
+  faqCta: FaqCta;
   cta: CTA;
 };
 
@@ -236,6 +242,10 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           ],
         },
       ],
+    },
+    faqCta: {
+      text: "Have questions about pricing or features?",
+      ctaText: "Visit our FAQ →",
     },
     cta: {
       title: "Everything you need. Nothing you don't.",
@@ -455,6 +465,10 @@ export const featuresData: { [key in Lang]: FeaturesPageData } = {
           ],
         },
       ],
+    },
+    faqCta: {
+      text: "¿Tienes preguntas sobre precios o funciones?",
+      ctaText: "Visita nuestras preguntas frecuentes →",
     },
     cta: {
       title: "Ordena tu negocio de manera simple y rápida",

@@ -14,7 +14,7 @@ export function FeatureImagePreview({ src, alt }: FeatureImagePreviewProps) {
 
   return (
     <>
-      <div className="w-24 md:w-44 flex-shrink-0 pr-2 pb-2 md:pr-4 md:pb-4 flex items-start justify-center">
+      <div className="w-24 md:w-44 shrink-0 pr-2 pb-2 md:pr-4 md:pb-4 flex items-start justify-center">
         <div
           className="relative w-full overflow-hidden rounded-xl cursor-zoom-in group/img"
           onClick={() => setOpen(true)}
@@ -43,7 +43,7 @@ export function FeatureImagePreview({ src, alt }: FeatureImagePreviewProps) {
               alt={alt}
               width={390}
               height={844}
-              className="max-h-[65vh] max-w-[280px] w-auto h-auto rounded-2xl shadow-2xl"
+              className="max-h-[65vh] max-w-70 w-auto h-auto rounded-2xl shadow-2xl"
             />
             <button
               className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors"

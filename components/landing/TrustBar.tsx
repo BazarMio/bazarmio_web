@@ -22,9 +22,9 @@ export function TrustBar({ items }: TrustBarProps) {
           {looped.map((item, i) => (
             <li
               key={i}
-              className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/5 px-4 py-1.5 text-xs font-medium tracking-wide text-lime flex-shrink-0 whitespace-nowrap mx-3"
+              className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/5 px-4 py-1.5 text-xs font-medium tracking-wide text-lime shrink-0 whitespace-nowrap mx-3"
             >
-              <Check className="w-3 h-3 flex-shrink-0" />
+              <Check className="w-3 h-3 shrink-0" />
               {item}
             </li>
           ))}

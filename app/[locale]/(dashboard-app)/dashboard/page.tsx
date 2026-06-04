@@ -224,7 +224,7 @@ export default async function DashboardOverviewPage({
             <CardHeader>
               <CardTitle>{data.topCategories.title}</CardTitle>
             </CardHeader>
-            <CardContent className="flex min-h-[320px] flex-1">
+            <CardContent className="flex min-h-80 flex-1">
               {overview.topCategories.length === 0 ? (
                 <EmptyState
                   title={data.topCategories.emptyTitle}
@@ -360,7 +360,7 @@ export default async function DashboardOverviewPage({
           {overview.recentSales.length === 0 ? (
             <EmptyState title={data.recentSales.empty} className="py-8" />
           ) : (
-            <Table className="min-w-[540px]">
+            <Table className="min-w-135">
               <TableHeader>
                 <TableRow>
                   <TableHead>{data.recentSales.columns.date}</TableHead>

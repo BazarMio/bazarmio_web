@@ -2,6 +2,7 @@ import { Hero } from "@/components/landing/Hero";
 import { TrustBar } from "@/components/landing/TrustBar";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { FeaturesGrid } from "@/components/landing/FeaturesGrid";
+import { FaqTeaser } from "@/components/landing/FaqTeaser";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { homeData, homeMetadata } from "@/app/data";
@@ -59,6 +60,13 @@ export default async function Home({ params }: Props) {
         title={content.featuresPreview.title}
         subtitle={content.featuresPreview.subtitle}
         features={content.featuresPreview.features}
+      />
+
+      <FaqTeaser
+        title={content.faqTeaser.title}
+        ctaText={content.faqTeaser.ctaText}
+        items={content.faqTeaser.items}
+        locale={lang}
       />
 
       <section className={SECTION_CTA}>

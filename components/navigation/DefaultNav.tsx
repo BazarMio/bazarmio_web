@@ -9,6 +9,12 @@ import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "./LanguageSelector";
 import { cn } from "@/lib/utils";
 import { NAV_CONTAINER, NAV_LINK, NAV_LINK_MOBILE } from "@/lib/theme";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface NavLink {
   href: string;
@@ -18,10 +24,9 @@ interface NavLink {
 interface DefaultNavProps {
   navLinks: NavLink[];
   homeHref: string;
-  loginHref: string;
 }
 
-export function DefaultNav({ navLinks, homeHref, loginHref }: DefaultNavProps) {
+export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -69,17 +74,24 @@ export function DefaultNav({ navLinks, homeHref, loginHref }: DefaultNavProps) {
 
             {/* Desktop: Login + Language selector */}
             <div className="hidden md:flex items-center gap-1 shrink-0">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-12 w-12 text-gray-400 hover:text-lime hover:bg-white/10"
-                aria-label="Sign in to dashboard"
-                asChild
-              >
-                <Link href={loginHref}>
-                  <LogIn className="size-5" />
-                </Link>
-              </Button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-12 w-12 text-gray-600 cursor-not-allowed pointer-events-none"
+                        aria-label="Dashboard — coming soon"
+                        tabIndex={-1}
+                      >
+                        <LogIn className="size-5" />
+                      </Button>
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">Coming soon</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
               <LanguageSelector />
             </div>
 
@@ -144,14 +156,13 @@ export function DefaultNav({ navLinks, homeHref, loginHref }: DefaultNavProps) {
 
         {/* Overlay footer — login + language selector */}
         <div className="flex items-center justify-center gap-4 px-4 py-8 border-t border-white/5 shrink-0">
-          <Link
-            href={loginHref}
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
-          >
+          <div className="flex items-center gap-2 text-sm font-medium text-gray-600 cursor-not-allowed">
             <LogIn className="h-4 w-4" />
-            Dashboard
-          </Link>
+            <span>Dashboard</span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-lime/10 text-lime border border-lime/20">
+              Soon
+            </span>
+          </div>
           <LanguageSelector />
         </div>
       </div>

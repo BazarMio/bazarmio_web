@@ -168,7 +168,7 @@ export default async function DashboardSalesPage({ params, searchParams }: Props
           <EmptyState title={data.table.empty} className="py-8" />
         ) : (
           <>
-            <Table className="min-w-[760px]">
+            <Table className="min-w-190">
               <TableHeader>
                 <TableRow>
                   <TableHead>{data.table.columns.date}</TableHead>

@@ -84,7 +84,7 @@ export function Hero({
                   alt={image.alt}
                   width={400}
                   height={800}
-                  className="w-full max-w-[220px] sm:max-w-[260px] h-auto drop-shadow-2xl"
+                  className="w-full max-w-55 sm:max-w-65 h-auto drop-shadow-2xl"
                   sizes="(max-width: 640px) 220px, 260px"
                   priority
                 />
@@ -145,7 +145,7 @@ export function Hero({
                 alt={image.alt}
                 width={400}
                 height={800}
-                className="w-full max-w-[480px] xl:max-w-[520px] h-auto drop-shadow-2xl"
+                className="w-full max-w-120 xl:max-w-130 h-auto drop-shadow-2xl"
                 sizes="(max-width: 1280px) 480px, 520px"
                 priority
               />

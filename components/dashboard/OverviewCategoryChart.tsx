@@ -35,7 +35,7 @@ function formatCurrency(value: number) {
 
 export function OverviewCategoryChart({ data, labels }: OverviewCategoryChartProps) {
   return (
-    <div className="h-full min-h-[320px] w-full">
+    <div className="h-full min-h-80 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} layout="vertical" margin={{ left: 24, right: 8, top: 8, bottom: 0 }}>
           <CartesianGrid stroke="rgba(255,255,255,0.08)" strokeDasharray="3 3" horizontal={false} />
