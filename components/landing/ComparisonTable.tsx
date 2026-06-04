@@ -15,7 +15,7 @@ import {
   ComparisonData,
   ComparisonRow,
   ComparisonSection,
-} from "@/app/[locale]/features/data";
+} from "@/app/[locale]/(marketing)/features/data";
 
 interface ComparisonTableProps {
   data: ComparisonData;

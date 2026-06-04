@@ -3,6 +3,7 @@ import { Lang } from "@/lib/types";
 type Nav = {
   home: string;
   features: string;
+  faq: string;
   contact: string;
   education: string;
 };
@@ -22,23 +23,40 @@ type Footer = {
 };
 
 type Hero = {
+  eyebrow: string;
   title: string;
   subtitle: string;
   cta: string;
   ctaSecondary: string;
   googlePlayAlt: string;
   appleStoreAlt: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 };
 
 type Feature = {
   title: string;
   description: string;
+  icon?: string;
+  image?: { src: string; alt: string };
 };
 
 type FeaturesPreview = {
   title: string;
   subtitle: string;
   features: readonly Feature[];
+};
+
+type HowItWorksStep = {
+  title: string;
+  description: string;
+};
+
+type HowItWorks = {
+  title: string;
+  steps: readonly HowItWorksStep[];
 };
 
 type BottomCTA = {
@@ -48,11 +66,25 @@ type BottomCTA = {
   ctaLink: string;
 };
 
+type FaqTeaserItem = {
+  question: string;
+  answer: string;
+};
+
+type FaqTeaser = {
+  title: string;
+  ctaText: string;
+  items: readonly FaqTeaserItem[];
+};
+
 export type HomePageData = {
   nav: Nav;
   footer: Footer;
   hero: Hero;
+  trustBar: readonly string[];
+  howItWorks: HowItWorks;
   featuresPreview: FeaturesPreview;
+  faqTeaser: FaqTeaser;
   bottomCTA: BottomCTA;
 };
 
@@ -97,6 +129,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
     nav: {
       home: "Home",
       features: "Features",
+      faq: "FAQ",
       contact: "Contact",
       education: "Education",
     },
@@ -112,6 +145,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       downloads: "Downloads",
     },
     hero: {
+      eyebrow: "Free · Inventory App",
       title: "No More Notebooks. Run Your Shop from Your Phone.",
       subtitle:
         "BazarMio is the free inventory and sales app built for small shops and street vendors in Ecuador. Track stock, record cash sales, and see your profits — no internet needed.",
@@ -121,6 +155,37 @@ export const homeData: { [key in Lang]: HomePageData } = {
         "Download BazarMio on Google Play — Free Inventory App for Small Shops",
       appleStoreAlt:
         "Download BazarMio on the App Store — Free Inventory App for Small Shops",
+      image: {
+        src: "https://images.bazarmio.app/web-assets/marketing-home/welcome_screen_en.png",
+        alt: "BazarMio Hero Image",
+      },
+    },
+    trustBar: [
+      "Works offline",
+      "No sign-up to start",
+      "Free forever",
+      "Your data stays on your phone",
+    ],
+    howItWorks: {
+      title: "How It Works",
+      steps: [
+        {
+          title: "Download free",
+          description: "No sign-up, no password — open it and you're ready to go.",
+        },
+        {
+          title: "Name your shop",
+          description: "That's your inventory created. Ten seconds, done.",
+        },
+        {
+          title: "Add what you sell",
+          description: "Name it, set a price, enter how many you have. Done in seconds per product.",
+        },
+        {
+          title: "Sell & update stock",
+          description: "Pick products sold, enter quantities, confirm. No math, no notebook, no guessing what's left.",
+        },
+      ],
     },
     featuresPreview: {
       title: "Everything You Need to Run a Tighter Shop",
@@ -131,16 +196,40 @@ export const homeData: { [key in Lang]: HomePageData } = {
           title: "Always Know What's Running Low",
           description:
             "See what's in stock, what's almost out, and what sells fastest — no notebook required.",
+          icon: "alert-triangle",
         },
         {
           title: "Record Sales Without Internet",
           description:
             "Log every cash sale instantly, even offline. Your data stays on your phone.",
+          icon: "wifi-off",
         },
         {
           title: "Reports You Can Actually Read",
           description:
             "Daily revenue, best sellers, monthly trends — in plain language, no spreadsheet needed.",
+          icon: "chart-bar",
+        },
+      ],
+    },
+    faqTeaser: {
+      title: "Common Questions",
+      ctaText: "See all questions →",
+      items: [
+        {
+          question: "Is BazarMio free?",
+          answer:
+            "Yes, forever. The free plan includes 1 inventory and everything you need to run your business — no hidden fees. Cloud backup and advanced analytics are available on Premium at $6.99/month.",
+        },
+        {
+          question: "Does the app work without internet?",
+          answer:
+            "Always. BazarMio is built to work fully offline — record sales, manage inventory, and view your reports without needing a connection. Internet is only needed if you choose to sync to the cloud on Premium.",
+        },
+        {
+          question: "What happens to my data if I cancel Premium?",
+          answer:
+            "Your data is always yours. If you cancel, cloud sync is disabled but everything stays safely on your phone. Nothing gets deleted.",
         },
       ],
     },
@@ -156,6 +245,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
     nav: {
       home: "Inicio",
       features: "Funciones",
+      faq: "FAQ",
       contact: "Contacto",
       education: "Educación",
     },
@@ -171,6 +261,7 @@ export const homeData: { [key in Lang]: HomePageData } = {
       },
     },
     hero: {
+      eyebrow: "Gratis · App de Inventario",
       title: "Olvida el cuaderno. Maneja tu tienda desde el celular.",
       subtitle:
         "BazarMio es la app gratuita de inventario y ventas para tiendas pequeñas y vendedores en Ecuador. Controla tu stock, registra tus ventas y ve cuánto ganaste — aunque no tengas internet.",
@@ -180,6 +271,37 @@ export const homeData: { [key in Lang]: HomePageData } = {
         "Descarga BazarMio en Google Play — App Gratuita de Inventario para Tiendas Pequeñas",
       appleStoreAlt:
         "Descarga BazarMio en la App Store — App Gratuita de Inventario para Tiendas Pequeñas",
+      image: {
+        src: "https://images.bazarmio.app/web-assets/marketing-home/welcome_screen_es.png",
+        alt: "BazarMio Hero Image",
+      },
+    },
+    trustBar: [
+      "Funciona sin internet",
+      "Sin registro para empezar",
+      "Gratis para siempre",
+      "Tus datos en tu celular",
+    ],
+    howItWorks: {
+      title: "¿Cómo funciona?",
+      steps: [
+        {
+          title: "Descárgala gratis",
+          description: "Sin registro, sin contraseña — ábrela y ya puedes empezar.",
+        },
+        {
+          title: "Ponle nombre a tu tienda",
+          description: "Tu inventario queda listo. Diez segundos, listo.",
+        },
+        {
+          title: "Agrega lo que vendes",
+          description: "Nombre, precio y cantidad. Listo en segundos por producto.",
+        },
+        {
+          title: "Vende y actualiza tu stock",
+          description: "Elige los productos, pon las cantidades, confirma. Sin calculadora, sin cuaderno, sin adivinar.",
+        },
+      ],
     },
     featuresPreview: {
       title: "Todo lo que necesitas para manejar mejor tu negocio",
@@ -190,16 +312,40 @@ export const homeData: { [key in Lang]: HomePageData } = {
           title: "Actualiza tu inventario al instante",
           description:
             "Mira qué tienes, qué se está acabando y qué se vende más rápido — sin tocar un cuaderno.",
+          icon: "alert-triangle",
         },
         {
           title: "Registra ventas sin internet",
           description:
             "Anota cada venta en efectivo al instante, aunque no tengas señal, tus datos quedan guardados en tu celular.",
+          icon: "wifi-off",
         },
         {
           title: "Reportes de ventas fáciles",
           description:
             "Mira tus ingresos del día, tus productos más vendidos y las tendencias del mes — en palabras simples, sin hojas de cálculo.",
+          icon: "chart-bar",
+        },
+      ],
+    },
+    faqTeaser: {
+      title: "Preguntas frecuentes",
+      ctaText: "Ver todas las preguntas →",
+      items: [
+        {
+          question: "¿BazarMio es gratis?",
+          answer:
+            "Sí, para siempre. El plan gratuito incluye 1 inventario y todo lo que necesitas para manejar tu negocio — sin costos ocultos. El respaldo en la nube y las analíticas avanzadas están disponibles en Premium por $6.99/mes.",
+        },
+        {
+          question: "¿La app funciona sin internet?",
+          answer:
+            "Siempre. BazarMio está diseñada para funcionar completamente sin internet — registra ventas, gestiona tu inventario y ve tus reportes sin necesitar conexión. El internet solo es necesario si eliges sincronizar tus datos con la nube en Premium.",
+        },
+        {
+          question: "¿Qué pasa con mis datos si cancelo el plan Premium?",
+          answer:
+            "Tus datos siempre son tuyos. Si cancelas, la sincronización en la nube se desactiva pero todo permanece guardado en tu celular. No se elimina nada.",
         },
       ],
     },

@@ -3,12 +3,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { LogIn, Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "./LanguageSelector";
 import { cn } from "@/lib/utils";
 import { NAV_CONTAINER, NAV_LINK, NAV_LINK_MOBILE } from "@/lib/theme";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface NavLink {
   href: string;
@@ -53,8 +59,9 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
                       href={link.href}
                       className={cn(
                         NAV_LINK,
+                        "rounded-full",
                         isActive
-                          ? "text-lime"
+                          ? "bg-white/10 text-lime"
                           : "text-gray-400 hover:text-white",
                       )}
                     >
@@ -65,8 +72,26 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
               </div>
             </div>
 
-            {/* Desktop: Language selector */}
-            <div className="hidden md:flex items-center shrink-0">
+            {/* Desktop: Login + Language selector */}
+            <div className="hidden md:flex items-center gap-1 shrink-0">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="inline-flex">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-12 w-12 text-gray-600 cursor-not-allowed pointer-events-none"
+                        aria-label="Dashboard — coming soon"
+                        tabIndex={-1}
+                      >
+                        <LogIn className="size-5" />
+                      </Button>
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">Coming soon</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
               <LanguageSelector />
             </div>
 
@@ -129,8 +154,15 @@ export function DefaultNav({ navLinks, homeHref }: DefaultNavProps) {
           })}
         </nav>
 
-        {/* Overlay footer — language selector */}
-        <div className="flex items-center justify-center px-4 py-8 border-t border-white/5 shrink-0">
+        {/* Overlay footer — login + language selector */}
+        <div className="flex items-center justify-center gap-4 px-4 py-8 border-t border-white/5 shrink-0">
+          <div className="flex items-center gap-2 text-sm font-medium text-gray-600 cursor-not-allowed">
+            <LogIn className="h-4 w-4" />
+            <span>Dashboard</span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-lime/10 text-lime border border-lime/20">
+              Soon
+            </span>
+          </div>
           <LanguageSelector />
         </div>
       </div>

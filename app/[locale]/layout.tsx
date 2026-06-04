@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+
+import { homeMetadata } from "@/app/data";
 import { SettingsProvider } from "@/context/SettingProvider";
-import { DefaultNav } from "@/components/navigation/DefaultNav";
-import { Footer } from "@/components/navigation/Footer";
-import { homeData, homeMetadata } from "@/app/data";
 import type { Lang } from "@/lib/types";
 
 type Props = {
@@ -50,19 +49,5 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   const lang = (locale === "es" ? "es" : "en") as Lang;
 
-  const navData = homeData[lang].nav;
-  const navLinks = [
-    { href: `/${lang}`, label: navData.home },
-    { href: `/${lang}/features`, label: navData.features },
-    { href: `/${lang}/contact`, label: navData.contact },
-    // { href: `/${lang}/education`, label: navData.education },
-  ];
-
-  return (
-    <SettingsProvider initialLang={lang}>
-      <DefaultNav navLinks={navLinks} homeHref={`/${lang}`} />
-      <main className="min-h-screen">{children}</main>
-      <Footer locale={lang} />
-    </SettingsProvider>
-  );
+  return <SettingsProvider initialLang={lang}>{children}</SettingsProvider>;
 }

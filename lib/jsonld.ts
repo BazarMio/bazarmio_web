@@ -237,6 +237,55 @@ export function getContactPageJsonLd(options: ContactPageJsonLdOptions): object 
   };
 }
 
+type FaqJsonLdOptions = {
+  locale: string;
+  pageTitle: string;
+  pageDescription: string;
+  homeLabel: string;
+  pageLabel: string;
+  questions: Array<{ question: string; answer: string }>;
+};
+
+export function getFaqJsonLd(options: FaqJsonLdOptions): object {
+  const { locale, pageTitle, pageDescription, homeLabel, pageLabel, questions } = options;
+  const url = `${BASE_URL}/${locale}/faq`;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": url,
+        name: pageTitle,
+        description: pageDescription,
+        url,
+        inLanguage: locale,
+        datePublished: "2026-06-02",
+        dateModified: "2026-06-02",
+        publisher: PUBLISHER,
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: homeLabel, item: `${BASE_URL}/${locale}` },
+            { "@type": "ListItem", position: 2, name: pageLabel, item: url },
+          ],
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        url,
+        inLanguage: locale,
+        mainEntity: questions.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        })),
+      },
+    ],
+  };
+}
+
 export function getWebPageJsonLd(options: WebPageJsonLdOptions): object {
   const {
     locale,
