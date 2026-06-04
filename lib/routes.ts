@@ -4,10 +4,20 @@ import type { Lang } from "./types";
 export const HOME = "/";
 export const FEATURES = "/features";
 export const EDUCATION = "/education";
+export const DASHBOARD = "/dashboard";
+export const DASHBOARD_LOGIN = "/dashboard/login";
+export const DASHBOARD_INVENTORY = "/dashboard/inventory";
+export const DASHBOARD_SALES = "/dashboard/sales";
+export const DASHBOARD_ACCOUNT = "/dashboard/account";
 
 // Legal Pages
+export const FAQ = "/faq";
+export const CONTACT = "/contact";
 export const TERMS = "/terms-and-conditions";
 export const PRIVACY = "/privacy-policy";
+
+// External
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.bazarmio.app";
 
 // Returns a locale-prefixed path
 export function localePath(locale: Lang, path: string): string {

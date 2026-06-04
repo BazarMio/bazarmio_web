@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSettings } from "@/context/SettingProvider";
 import { homeData } from "@/app/data";
 import { cn } from "@/lib/utils";
+import { GOOGLE_PLAY_URL } from "@/lib/routes";
 
 interface GooglePlayBadgeProps {
   className?: string;
@@ -36,7 +37,9 @@ export function GooglePlayBadge({
 
   return (
     <Link
-      href="https://play.google.com/store/apps/details?id=com.bazarmio.app"
+      href={GOOGLE_PLAY_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn("inline-block", className)}
     >
       <Image
